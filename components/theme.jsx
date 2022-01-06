@@ -7,7 +7,6 @@ export default function ThemeChanger() {
     const [mounted, setMounted] = useState(false);
     const { resolvedTheme, setTheme } = useTheme();
 
-    // When mounted on client, now we can show the UI
     useEffect(() => setMounted(true), []);
 
     if (!mounted) return (
