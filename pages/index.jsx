@@ -36,7 +36,7 @@ export default function Home({ posts }) {
                         <h2>Developer at Brainify</h2>
                     </div>
                     <div>
-                        <Image src="/favicon.ico" height={175} width={175} />
+                        <Image alt="Picture of Kasper Aamodt" src="/favicon.ico" height={175} width={175} />
                     </div>
                 </Intro>
 

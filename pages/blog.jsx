@@ -5,7 +5,6 @@ import { getAllPosts } from "../lib/api";
 import Link from "next/link";
 
 export default function Blog({ posts }) {
-    console.log(posts);
     return (
         <>
             <Head>
