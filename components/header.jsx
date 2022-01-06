@@ -28,8 +28,10 @@ const Wrapper = styled("div")`
 const Nav = styled("nav")`
     display: flex;
     gap: 10px;
+    align-items: center;
 
     a {
         text-decoration: none;
+        line-height: 1;
     }
 `;

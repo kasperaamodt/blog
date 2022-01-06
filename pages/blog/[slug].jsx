@@ -28,12 +28,12 @@ export default function Blog({ blog }) {
 
                     <Main>
                         <span>{formatDate(blog.date)}</span>
-                        <h1>{blog.title}</h1>
+                        <h1 style={{marginTop: '0px'}}>{blog.title}</h1>
                         <div
                             dangerouslySetInnerHTML={{ __html: blog.content }}
+                            style={{marginBottom: '0px'}}
                         />
                     </Main>
-                    <Spacer />
                 </>
             )}
         </>
@@ -64,18 +64,19 @@ const Main = styled("div")`
     max-width: 680px;
     margin: 0 auto;
     padding: 0 15px;
+    padding-bottom: 2rem;
 
-    h2, h3, h4, p, a, img, pre {
-        margin-top: 42px;
+    * {
+        margin: 24px 0;
         font-family: Georgia, serif;
     }
 
     p {
         font-size: 21px;
-    }
 
-    h2, h3, h4 {
-        margin-bottom: -32px;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
 
     h1 {
@@ -92,6 +93,14 @@ const Main = styled("div")`
         border-radius: 5px;
         font-family: Menlo, Consolas, monaco, monospace;
         padding: 0.8em 1em;
+
+        code {
+            display: inline-block;
+            max-width: 100%;
+            white-space: normal;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
     }
 `;
 

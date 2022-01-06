@@ -21,18 +21,16 @@ export default function Home({ posts }) {
 
             <Main>
                 <Intro>
+                    <Image
+                        alt="Picture of Kasper Aamodt"
+                        src="/images/me.jpg"
+                        height={175}
+                        width={175}
+                    />
                     <div>
                         <h1>Kasper Aamodt</h1>
-                        <h2>Developer at Brainify</h2>
+                        <h2>Developer at <a href="https://brainify.no" target="_blank">Brainify</a></h2>
                         <p>Blogging about stuff, mostly tech.</p>
-                    </div>
-                    <div>
-                        <Image
-                            alt="Picture of Kasper Aamodt"
-                            src="/images/me.jpg"
-                            height={939}
-                            width={939}
-                        />
                     </div>
                 </Intro>
 
@@ -67,12 +65,17 @@ const Main = styled("div")`
     max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
+    padding-bottom: 2rem;
 
     .post-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        margin: 80px 0;
+        margin-top: 80px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 100%;
+        }
     }
 
     .post-card {
@@ -133,8 +136,9 @@ const Main = styled("div")`
 `;
 
 const Intro = styled("div")`
-    display: grid;
-    grid-template-columns: 70% 30%;
+    display: flex;
+    gap: 24px;
+    align-items: center;
 
     h1,
     h2 {
@@ -144,7 +148,5 @@ const Intro = styled("div")`
 
     img {
         border-radius: 50%;
-        height: 175px;
-        width: 175px;
     }
 `;

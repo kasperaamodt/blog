@@ -47,10 +47,18 @@ const Main = styled("div")`
     padding: 0 15px;
 
     .post-card {
+        position: relative;
+        border-bottom: 1px solid;
+        padding: 24px 0;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
+        gap: 12px;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
 
         h2 {
             font-size: 1rem;
