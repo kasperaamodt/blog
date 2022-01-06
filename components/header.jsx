@@ -1,5 +1,5 @@
 import { styled } from "goober";
-import ThemeChanger from "./theme";
+//import ThemeChanger from "./theme";
 import Link from "next/link";
 
 export default function Header() {
@@ -9,7 +9,7 @@ export default function Header() {
                 <Link href="/">Home</Link>
                 <Link href="/blog">Blog</Link>
             </Nav>
-            <ThemeChanger />
+            {/* <ThemeChanger /> */}
         </Wrapper>
     );
 }
