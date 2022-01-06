@@ -5,7 +5,7 @@ import { styled } from "goober";
 
 export default function ThemeChanger() {
     const [mounted, setMounted] = useState(false);
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
 
     // When mounted on client, now we can show the UI
     useEffect(() => setMounted(true), []);
@@ -16,10 +16,10 @@ export default function ThemeChanger() {
         <div>
             <Button
                 onClick={() =>
-                    theme === "light" ? setTheme("dark") : setTheme("light")
+                    setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
                 }
             >
-                {theme === "light" ? (
+                {resolvedTheme === "light" ? (
                     <MoonIcon size="24px" color="#000" />
                 ) : (
                     <SunIcon size="24px" color="#fff" />
