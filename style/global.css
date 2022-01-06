@@ -73,13 +73,13 @@ h6 {
     /* Your default theme */
     --background: white;
     --foreground: black;
-    --mode: rgba(234,234,234,1);
+    --mode: rgba(234, 234, 234, 1);
 }
 
 [data-theme="dark"] {
     --background: #121212;
     --foreground: white;
-    --mode: rgba(68,68,68,1);
+    --mode: rgba(68, 68, 68, 1);
 }
 
 body {

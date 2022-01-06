@@ -11,7 +11,7 @@ export default function Header() {
             </Nav>
             <ThemeChanger />
         </Wrapper>
-    )
+    );
 }
 
 const Wrapper = styled("div")`
@@ -28,7 +28,7 @@ const Wrapper = styled("div")`
 const Nav = styled("nav")`
     display: flex;
     gap: 10px;
-    
+
     a {
         text-decoration: none;
     }

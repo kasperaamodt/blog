@@ -10,10 +10,7 @@ export default function Blog({ posts }) {
         <>
             <Head>
                 <title>Blog - Kasper Aamodt</title>
-                <meta
-                    content="Read my latest blog posts"
-                    name="description"
-                />
+                <meta content="Read my latest blog posts" name="description" />
             </Head>
 
             <Header />
@@ -24,12 +21,13 @@ export default function Blog({ posts }) {
                         <div className="post-card" key={node.slug}>
                             <h2> {node.title}</h2>
                             <span>{formatDate(node.date)}</span>
-                            <Link href={`/blog/` + node.slug} passHref><a></a></Link>
+                            <Link href={`/blog/` + node.slug} passHref>
+                                <a></a>
+                            </Link>
                         </div>
-                    )
+                    );
                 })}
             </Main>
-
         </>
     );
 }
@@ -38,7 +36,7 @@ export async function getStaticProps() {
     const allPosts = await getAllPosts();
 
     return {
-        props: { posts: allPosts.edges },
+        props: { posts: allPosts.edges }
     };
 }
 

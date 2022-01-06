@@ -1,15 +1,15 @@
 const API_URL = "https://wp.aamodt.xyz/graphql";
 
 async function fetchAPI(query, { variables } = {}) {
-    const headers = { 'Content-Type': 'application/json' };
+    const headers = { "Content-Type": "application/json" };
 
     const res = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         headers,
         body: JSON.stringify({
             query,
-            variables,
-        }),
+            variables
+        })
     });
 
     const json = await res.json();
@@ -17,23 +17,22 @@ async function fetchAPI(query, { variables } = {}) {
 }
 
 export async function sendForm(name, email, select, message) {
-    const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
+    const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Accept: "application/json"
         },
         body: JSON.stringify({
             apikey: API_KEY,
             name: name,
             email: email,
             mood: select,
-            message: message,
-        }),
+            message: message
+        })
     });
     return res?.json();
 }
-
 
 export async function getAllPostSlugs() {
     const data = await fetchAPI(`
@@ -92,7 +91,6 @@ export async function getAllPosts() {
     return data?.posts;
 }
 
-
 export async function getPostAndMorePosts(slug) {
     const data = await fetchAPI(
         `
@@ -117,8 +115,8 @@ export async function getPostAndMorePosts(slug) {
         {
             variables: {
                 id: slug,
-                idType: 'SLUG',
-            },
+                idType: "SLUG"
+            }
         }
     );
     return data;

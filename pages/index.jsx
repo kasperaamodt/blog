@@ -28,7 +28,12 @@ export default function Home({ posts }) {
                         <p>Blogging about stuff, mostly tech.</p>
                     </div>
                     <div>
-                        <Image alt="Picture of Kasper Aamodt" src="/images/me.jpg" height={939} width={939} />
+                        <Image
+                            alt="Picture of Kasper Aamodt"
+                            src="/images/me.jpg"
+                            height={939}
+                            width={939}
+                        />
                     </div>
                 </Intro>
 
@@ -38,21 +43,23 @@ export default function Home({ posts }) {
                             <div className="post-card" key={node.slug}>
                                 <h3>{node.title}</h3>
                                 <span>{formatDate(node.date)}</span>
-                                <Link href={`/blog/` + node.slug} passHref><a></a></Link>
+                                <Link href={`/blog/` + node.slug} passHref>
+                                    <a></a>
+                                </Link>
                             </div>
-                        )
+                        );
                     })}
                 </div>
             </Main>
         </>
     );
-};
+}
 
 export async function getStaticProps() {
     const posts = await getPostsForHome();
 
     return {
-        props: { posts: posts.edges },
+        props: { posts: posts.edges }
     };
 }
 
@@ -64,7 +71,7 @@ const Main = styled("div")`
 
     .post-grid {
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         margin: 80px 0;
     }
@@ -82,13 +89,31 @@ const Main = styled("div")`
         border-radius: 12px;
 
         &:before {
-            content: '';
+            content: "";
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             z-index: -1;
             margin: -5px;
             border-radius: inherit;
-            background: linear-gradient(to bottom right, rgb(237, 34, 36), rgb(243, 91, 34), rgb(249, 150, 33), rgb(245, 193, 30), rgb(241, 235, 27) 27%, rgb(241, 235, 27), rgb(241, 235, 27) 33%, rgb(99, 199, 32), rgb(12, 155, 73), rgb(33, 135, 141), rgb(57, 84, 165), rgb(97, 55, 155), rgb(147, 40, 142));
+            background: linear-gradient(
+                to bottom right,
+                rgb(237, 34, 36),
+                rgb(243, 91, 34),
+                rgb(249, 150, 33),
+                rgb(245, 193, 30),
+                rgb(241, 235, 27) 27%,
+                rgb(241, 235, 27),
+                rgb(241, 235, 27) 33%,
+                rgb(99, 199, 32),
+                rgb(12, 155, 73),
+                rgb(33, 135, 141),
+                rgb(57, 84, 165),
+                rgb(97, 55, 155),
+                rgb(147, 40, 142)
+            );
         }
 
         a {
@@ -112,7 +137,8 @@ const Intro = styled("div")`
     display: grid;
     grid-template-columns: 70% 30%;
 
-    h1, h2 {
+    h1,
+    h2 {
         line-height: 1;
         margin-bottom: 10px;
     }

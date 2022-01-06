@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ErrorPage from 'next/error';
+import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
@@ -20,13 +20,8 @@ export default function Blog({ blog }) {
             ) : (
                 <>
                     <Head>
-                        <title>
-                            {blog.title} - Kasper Aamodt
-                        </title>
-                        <meta
-                            content={blog.excerpt}
-                            name="description"
-                        />
+                        <title>{blog.title} - Kasper Aamodt</title>
+                        <meta content={blog.excerpt} name="description" />
                     </Head>
 
                     <Header />
@@ -34,7 +29,9 @@ export default function Blog({ blog }) {
                     <Main>
                         <h1>{blog.title}</h1>
                         <span>{formatDate(blog.date)}</span>
-                        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+                        <div
+                            dangerouslySetInnerHTML={{ __html: blog.content }}
+                        />
                     </Main>
                     <Spacer />
                 </>
@@ -48,8 +45,8 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            blog: data.post,
-        },
+            blog: data.post
+        }
     };
 }
 
@@ -58,7 +55,7 @@ export async function getStaticPaths() {
 
     return {
         paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
-        fallback: true,
+        fallback: true
     };
 }
 
