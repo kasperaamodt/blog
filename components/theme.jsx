@@ -10,7 +10,9 @@ export default function ThemeChanger() {
     // When mounted on client, now we can show the UI
     useEffect(() => setMounted(true), []);
 
-    if (!mounted) return null;
+    if (!mounted) return (
+        <div style={{height: '34px', width: '34px'}}></div>
+    );
 
     return (
         <div>
@@ -33,6 +35,4 @@ const Button = styled("div")`
     background: var(--mode);
     padding: 5px;
     border-radius: 5px;
-    height: 34px;
-    width: 34px;
 `;
