@@ -7,6 +7,7 @@ async function generate() {
     const pages = await globby([
         "pages/*.jsx",
         "pages/**/*.jsx",
+        '!pages/_*.jsx',
         "!pages/api",
         "!pages/404.jsx"
     ]);
@@ -18,14 +19,13 @@ async function generate() {
             .map((page) => {
                 const path = page
                     .replace("pages", "")
-                    .replace("blog", "")
                     .replace(".jsx", "")
                     .replace(".js", "");
                 const route = path === "/index" ? "" : path;
 
                 return `
               <url>
-                  <loc>${`https://leerob.io${route}`}</loc>
+                  <loc>${`https://aamodt.xyz${route}`}</loc>
               </url>
             `;
             })
