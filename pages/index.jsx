@@ -29,7 +29,7 @@ export default function Home({ posts }) {
                     />
                     <div>
                         <h1>Kasper Aamodt</h1>
-                        <h2>Developer at <a href="https://brainify.no" target="_blank" rel="noopener">Brainify</a></h2>
+                        <h2>Developer at <a href="https://brainify.no" target="_blank" rel="noreferrer">Brainify</a></h2>
                         <p>Blogging about stuff, mostly tech.</p>
                     </div>
                 </Intro>
