@@ -27,8 +27,8 @@ export default function Blog({ blog }) {
                     <Header />
 
                     <Main>
-                        <h1>{blog.title}</h1>
                         <span>{formatDate(blog.date)}</span>
+                        <h1>{blog.title}</h1>
                         <div
                             dangerouslySetInnerHTML={{ __html: blog.content }}
                         />
@@ -61,16 +61,33 @@ export async function getStaticPaths() {
 
 const Main = styled("div")`
     width: 100%;
-    max-width: 700px;
+    max-width: 680px;
     margin: 0 auto;
     padding: 0 15px;
 
-    * {
-        margin: 12px 0;
+    h2, h3, h4, p, a, img, pre {
+        margin-top: 42px;
         font-family: Georgia, serif;
     }
 
-    .wp-block-code {
+    p {
+        font-size: 21px;
+    }
+
+    h2, h3, h4 {
+        margin-bottom: -32px;
+    }
+
+    h1 {
+        font-size: 48px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    pre {
         border: 1px solid;
         border-radius: 5px;
         font-family: Menlo, Consolas, monaco, monospace;
