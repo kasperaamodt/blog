@@ -97,9 +97,13 @@ const Main = styled("div")`
         code {
             display: inline-block;
             max-width: 100%;
-            white-space: normal;
             word-break: break-all;
             word-wrap: break-word;
+            margin: 0;
+
+            @media (max-width: 568px) {
+                white-space: normal;
+            }
         }
     }
 `;
