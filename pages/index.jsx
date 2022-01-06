@@ -15,7 +15,6 @@ export default function Home({ posts }) {
                     name="description"
                     content="Founder, developer and writer."
                 />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <Header />
@@ -44,7 +43,7 @@ export default function Home({ posts }) {
                                 <h3>{node.title}</h3>
                                 <span>{formatDate(node.date)}</span>
                                 <Link href={`/blog/` + node.slug} passHref>
-                                    <a></a>
+                                    <a aria-label={node.title}></a>
                                 </Link>
                             </div>
                         );

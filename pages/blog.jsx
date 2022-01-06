@@ -22,7 +22,7 @@ export default function Blog({ posts }) {
                             <h2> {node.title}</h2>
                             <span>{formatDate(node.date)}</span>
                             <Link href={`/blog/` + node.slug} passHref>
-                                <a></a>
+                                <a aria-label={node.title}></a>
                             </Link>
                         </div>
                     );
