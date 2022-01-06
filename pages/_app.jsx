@@ -1,4 +1,4 @@
-//import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "next-themes";
 import { createElement } from "react";
 import { setup } from "goober";
 import { prefix } from "goober/prefixer";
@@ -8,9 +8,9 @@ setup(createElement, prefix);
 
 function MyApp({ Component, pageProps }) {
     return (
-        // <ThemeProvider>
+        <ThemeProvider>
             <Component {...pageProps} />
-        // </ThemeProvider>
+        </ThemeProvider>
     );
 }
 
