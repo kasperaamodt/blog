@@ -21,7 +21,7 @@ export default function Blog({ blog }) {
                 <>
                     <Head>
                         <title>
-                            {blog.title}
+                            {blog.title} - Kasper Aamodt
                         </title>
                         <meta
                             content={blog.excerpt}

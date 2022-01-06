@@ -9,9 +9,9 @@ export default function Blog({ posts }) {
     return (
         <>
             <Head>
-                <title>Blog | Aamodt Group | Articles and news</title>
+                <title>Blog - Kasper Aamodt</title>
                 <meta
-                    content="Read the latest articles and news about what we do day to day, and also important updates"
+                    content="Read my latest blog posts"
                     name="description"
                 />
             </Head>

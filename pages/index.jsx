@@ -10,10 +10,10 @@ export default function Home({ posts }) {
     return (
         <>
             <Head>
-                <title>Kasper Aamodt</title>
+                <title>Kasper Aamodt - Founder, Developer, writer.</title>
                 <meta
                     name="description"
-                    content="Kasper Aamodt personal website"
+                    content="Founder, developer and writer."
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
