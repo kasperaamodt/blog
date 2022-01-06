@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="icon" href="/images/icon.png" />
                     <style
                         id={"_goober"}
                         dangerouslySetInnerHTML={{
