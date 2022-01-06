@@ -43,7 +43,7 @@ export default function Home({ posts }) {
                 <div className="post-grid">
                     {posts.map(({ node }) => {
                         return (
-                            <div className="post-card">
+                            <div className="post-card" key={node.slug}>
                                 <h3>{node.title}</h3>
                                 <span>{formatDate(node.date)}</span>
                                 <Link href={`/blog/` + node.slug} passHref><a></a></Link>

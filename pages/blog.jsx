@@ -21,7 +21,7 @@ export default function Blog({ posts }) {
             <Main>
                 {posts.map(({ node }) => {
                     return (
-                        <div>
+                        <div key={node.slug}>
                             <Link href={`/blog/` + node.slug}>{node.title}</Link>
                         </div>
                     )

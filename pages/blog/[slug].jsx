@@ -1,4 +1,5 @@
 import Head from "next/head";
+import ErrorPage from 'next/error';
 import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
@@ -19,7 +20,7 @@ export default function Blog({ blog }) {
     return (
         <>
             {router.isFallback ? (
-                <PostTitle>Loading…</PostTitle>
+                <span>Loading…</span>
             ) : (
                 <>
                     <Head>
