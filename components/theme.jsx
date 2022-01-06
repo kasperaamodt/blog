@@ -33,4 +33,6 @@ const Button = styled("div")`
     background: var(--mode);
     padding: 5px;
     border-radius: 5px;
+    height: 34px;
+    width: 34px;
 `;
