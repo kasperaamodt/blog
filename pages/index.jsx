@@ -28,8 +28,25 @@ export default function Home({ posts }) {
                         width={175}
                     />
                     <div>
-                        <h1><a href="https://twitter.com/kasperaamodt" target="_blank" rel="noreferrer">Kasper Aamodt</a></h1>
-                        <h2>Developer at <a href="https://brainify.no" target="_blank" rel="noreferrer">Brainify</a></h2>
+                        <h1>
+                            <a
+                                href="https://twitter.com/kasperaamodt"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Kasper Aamodt
+                            </a>
+                        </h1>
+                        <h2>
+                            Developer at{" "}
+                            <a
+                                href="https://brainify.no"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Brainify
+                            </a>
+                        </h2>
                         <p>Blogging about stuff, mostly tech.</p>
                     </div>
                 </Intro>
@@ -47,7 +64,9 @@ export default function Home({ posts }) {
                         );
                     })}
                 </div>
-                <div style={{textAlign: 'center', paddingTop: '12px'}}><Link href="/blog">View all</Link></div>
+                <div style={{ textAlign: "center", paddingTop: "12px" }}>
+                    <Link href="/blog">View all</Link>
+                </div>
             </Main>
         </>
     );

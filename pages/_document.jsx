@@ -1,11 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { extractCss } from 'goober'
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { extractCss } from "goober";
 
 export default class MyDocument extends Document {
     static async getInitialProps({ renderPage }) {
-        const page = await renderPage()
-        const css = extractCss()
-        return { ...page, css }
+        const page = await renderPage();
+        const css = extractCss();
+        return { ...page, css };
     }
     render() {
         return (
@@ -13,8 +13,10 @@ export default class MyDocument extends Document {
                 <Head>
                     <link rel="icon" href="/favicon.ico" />
                     <style
-                        id={'_goober'}
-                        dangerouslySetInnerHTML={{ __html: ' ' + this.props.css }}
+                        id={"_goober"}
+                        dangerouslySetInnerHTML={{
+                            __html: " " + this.props.css
+                        }}
                     />
                 </Head>
                 <body>

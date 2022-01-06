@@ -9,15 +9,13 @@ export default function ThemeChanger() {
 
     useEffect(() => setMounted(true), []);
 
-    if (!mounted) return (
-        <div style={{height: '34px', width: '34px'}}></div>
-    );
+    if (!mounted) return <div style={{ height: "34px", width: "34px" }}></div>;
 
     return (
         <div>
             <Button
                 onClick={() =>
-                    setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+                    setTheme(resolvedTheme === "light" ? "dark" : "light")
                 }
             >
                 {resolvedTheme === "light" ? (
