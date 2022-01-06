@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { styled } from "goober";
+import styled from "@emotion/styled";
 import Header from "../components/header";
 import { getPostsForHome } from "../lib/api";
 import Link from "next/link";
@@ -62,7 +62,7 @@ export async function getStaticProps() {
     };
 }
 
-const Main = styled("div")`
+const Main = styled.div`
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
@@ -132,7 +132,7 @@ const Main = styled("div")`
     }
 `;
 
-const Intro = styled("div")`
+const Intro = styled.div`
     display: grid;
     grid-template-columns: 70% 30%;
 
