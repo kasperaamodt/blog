@@ -77,8 +77,8 @@ h6 {
 }
 
 [data-theme="dark"] {
-    --background: #121212;
-    --foreground: white;
+    --background: black;
+    --foreground: rgb(12, 11, 11);
     --mode: rgba(68, 68, 68, 1);
 }
 
