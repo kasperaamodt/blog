@@ -1,5 +1,7 @@
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
+import { SunIcon, MoonIcon } from './icons'
+import { styled } from 'goober'
 
 export default function ThemeChanger() {
     const [mounted, setMounted] = useState(false)
@@ -12,8 +14,15 @@ export default function ThemeChanger() {
 
     return (
         <div>
-            <button onClick={() => setTheme('light')}>Light Mode</button>
-            <button onClick={() => setTheme('dark')}>Dark Mode</button>
+            <Button onClick={() => theme === 'light' ? setTheme('dark') : setTheme('light')}>
+                {theme === 'light' ? <MoonIcon size="24px" color="#000" /> : <SunIcon size="24px" color="#fff" />}
+            </Button>
         </div>
     )
 }
+
+const Button = styled("div")`
+    background: var(--mode);
+    padding: 5px;
+    border-radius: 5px;
+`;

@@ -4,14 +4,10 @@ import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
 import Header from "../../components/header";
+import { formatDate } from "../../utils/functions";
 
 export default function Blog({ blog }) {
     const router = useRouter();
-    const date = new Date(blog?.date).toLocaleDateString('no-NO', {
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit',
-    });
 
     if (!router.isFallback && !blog?.slug) {
         return <ErrorPage statusCode={404} />;
@@ -37,8 +33,10 @@ export default function Blog({ blog }) {
 
                     <Main>
                         <h1>{blog.title}</h1>
-                        <p>{date}</p>
+                        <span>{formatDate(blog.date)}</span>
+                        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                     </Main>
+                    <Spacer />
                 </>
             )}
         </>
@@ -69,4 +67,20 @@ const Main = styled("div")`
     max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
+
+    * {
+        margin: 12px 0;
+        font-family: Georgia, serif;
+    }
+
+    .wp-block-code {
+        border: 1px solid;
+        border-radius: 5px;
+        font-family: Menlo, Consolas, monaco, monospace;
+        padding: 0.8em 1em;
+    }
+`;
+
+const Spacer = styled("div")`
+    height: 2rem;
 `;
