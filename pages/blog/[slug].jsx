@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
 import Header from "../../components/header";
-import { formatDate } from "../../utils/functions";
+import { formatDate, metaDescription, removeTags } from "../../utils/functions";
 
 export default function Blog({ blog }) {
     const router = useRouter();
@@ -12,6 +12,10 @@ export default function Blog({ blog }) {
     if (!router.isFallback && !blog?.slug) {
         return <ErrorPage statusCode={404} />;
     }
+
+    var excerpt = blog?.excerpt;
+    excerpt = removeTags(excerpt);
+    excerpt = metaDescription(excerpt);
 
     return (
         <>
@@ -21,7 +25,7 @@ export default function Blog({ blog }) {
                 <>
                     <Head>
                         <title>{blog.title} - Kasper Aamodt</title>
-                        <meta content={blog.excerpt} name="description" />
+                        <meta content={excerpt} name="description" />
                     </Head>
 
                     <Header />
@@ -88,6 +92,16 @@ const Main = styled("div")`
         font-size: 30px;
     }
 
+    figure {
+        margin: 0;
+    }
+
+    img {
+        object-fit: contain;
+        width: auto;
+        height: auto;
+    }
+
     pre {
         position: relative;
         padding: 0.8rem 1rem;
@@ -137,8 +151,4 @@ const Main = styled("div")`
             }
         }
     }
-`;
-
-const Spacer = styled("div")`
-    height: 2rem;
 `;
