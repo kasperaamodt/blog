@@ -1,6 +1,5 @@
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { SunIcon, MoonIcon } from "./icons";
 import { styled } from "goober";
 
 export default function ThemeChanger() {
@@ -19,9 +18,9 @@ export default function ThemeChanger() {
                 }
             >
                 {resolvedTheme === "light" ? (
-                    <MoonIcon size="24px" color="#000" />
+                    <Black />
                 ) : (
-                    <SunIcon size="24px" color="#fff" />
+                    <White />
                 )}
             </Button>
         </div>
@@ -33,4 +32,18 @@ const Button = styled("div")`
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+`;
+
+const Black = styled("div")`
+    height: 24px;
+    width: 24px;
+    background-color: black;
+    border-radius: 50%;
+`;
+
+const White = styled("div")`
+    height: 24px;
+    width: 24px;
+    background-color: white;
+    border-radius: 50%;
 `;
