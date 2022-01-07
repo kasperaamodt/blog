@@ -26,6 +26,7 @@ export default function Home({ posts }) {
                         src="/images/me.jpg"
                         height={175}
                         width={175}
+                        priority
                     />
                     <div>
                         <h1>
