@@ -13,9 +13,11 @@ export default function Blog({ blog }) {
         return <ErrorPage statusCode={404} />;
     }
 
-    var excerpt = blog?.excerpt;
-    excerpt = removeTags(excerpt);
-    excerpt = metaDescription(excerpt);
+    function makeExcerpt(desc) {
+        var excerpt = removeTags(desc);
+        excerpt = metaDescription(excerpt);
+        return excerpt;
+    }
 
     return (
         <>
@@ -25,7 +27,7 @@ export default function Blog({ blog }) {
                 <>
                     <Head>
                         <title>{blog.title} - Kasper Aamodt</title>
-                        <meta content={excerpt} name="description" />
+                        <meta content={makeExcerpt(blog.excerpt)} name="description" />
                     </Head>
 
                     <Header />
