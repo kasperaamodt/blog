@@ -16,34 +16,16 @@ export default function ThemeChanger() {
                 onClick={() =>
                     setTheme(resolvedTheme === "light" ? "dark" : "light")
                 }
-            >
-                {resolvedTheme === "light" ? (
-                    <Black />
-                ) : (
-                    <White />
-                )}
-            </Button>
+            />
         </div>
     );
 }
 
 const Button = styled("div")`
-    background: var(--mode);
+    background: var(--foreground);
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-`;
-
-const Black = styled("div")`
     height: 24px;
     width: 24px;
-    background-color: black;
-    border-radius: 50%;
-`;
-
-const White = styled("div")`
-    height: 24px;
-    width: 24px;
-    background-color: white;
-    border-radius: 50%;
 `;
