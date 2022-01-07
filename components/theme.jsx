@@ -32,4 +32,5 @@ const Button = styled("div")`
     background: var(--mode);
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
 `;

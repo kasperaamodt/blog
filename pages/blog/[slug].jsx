@@ -89,10 +89,41 @@ const Main = styled("div")`
     }
 
     pre {
-        border: 1px solid;
+        position: relative;
+        padding: 0.8rem 1rem;
+        background-color: var(--background);
+        background-clip: padding-box;
+        border: solid 2px transparent;
         border-radius: 5px;
         font-family: Menlo, Consolas, monaco, monospace;
-        padding: 0.8em 1em;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: linear-gradient(
+                to bottom right,
+                rgb(237, 34, 36),
+                rgb(243, 91, 34),
+                rgb(249, 150, 33),
+                rgb(245, 193, 30),
+                rgb(241, 235, 27) 27%,
+                rgb(241, 235, 27),
+                rgb(241, 235, 27) 33%,
+                rgb(99, 199, 32),
+                rgb(12, 155, 73),
+                rgb(33, 135, 141),
+                rgb(57, 84, 165),
+                rgb(97, 55, 155),
+                rgb(147, 40, 142)
+            );
+        }
 
         code {
             display: inline-block;

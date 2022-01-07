@@ -27,11 +27,20 @@ const Wrapper = styled("div")`
 
 const Nav = styled("nav")`
     display: flex;
-    gap: 10px;
     align-items: center;
 
     a {
         text-decoration: none;
         line-height: 1;
+        padding: 5px 10px;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: var(--mode);
+        }
+
+        &:first-of-type {
+            margin-left: -10px;
+        }
     }
 `;
