@@ -99,9 +99,9 @@ const Main = styled("div")`
     }
 
     img {
-        object-fit: contain;
-        width: auto;
+        width: 100%;
         height: auto;
+        border-radius: 5px;
     }
 
     pre {
