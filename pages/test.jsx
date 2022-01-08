@@ -14,7 +14,11 @@ export default function Test({ data }) {
         }
     }
 
-    console.log(count);
+    const resJson = {
+        downloads: [count]
+    }
+
+    console.log(resJson)
 
     return (
         <>
