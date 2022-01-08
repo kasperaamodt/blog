@@ -12,8 +12,8 @@ export default function Blog({ posts }) {
                 <title>Blog - Kasper Aamodt</title>
                 <meta content="Read my latest blog posts" name="description" />
 
-                <meta property="twitter:image" content="https://api.placid.app/u/qo2ulian3&{TITLE}[{TEXT}]={Test}" />
-                <meta name="twitter:card" content="summary_large_image"></meta>
+                <meta property="twitter:image" content="https://api.placid.app/u/qo2ulian3?&title[text]=Test"/>
+                <meta name="twitter:card" content="summary_large_image" />
             </Head>
 
             <Header />
