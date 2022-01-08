@@ -20,45 +20,36 @@ export default function Home({ posts }) {
             <Header />
 
             <Main>
-                <Intro>
-                    <Image
-                        alt="Picture of Kasper Aamodt"
-                        src="/images/me.jpg"
-                        height={175}
-                        width={175}
-                        priority
-                    />
-                    <div>
-                        <h1>
-                            <a
-                                href="https://twitter.com/kasperaamodt"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Kasper Aamodt
-                            </a>
-                        </h1>
-                        <h2>
-                            Developer at{" "}
-                            <a
-                                href="https://brainify.no"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Brainify
-                            </a>
-                            &nbsp;&{" "}
-                            <a
-                                href="https://aamodtgroup.com"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                AG
-                            </a>
-                        </h2>
-                        <p>Blogging about stuff, mostly tech.</p>
-                    </div>
-                </Intro>
+                <div>
+                    <h1>
+                        <a
+                            href="https://twitter.com/kasperaamodt"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Kasper Aamodt
+                        </a>
+                    </h1>
+                    <h2>
+                        Developer at{" "}
+                        <a
+                            href="https://brainify.no"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Brainify
+                        </a>
+                        &nbsp;&{" "}
+                        <a
+                            href="https://aamodtgroup.com"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            AG
+                        </a>
+                    </h2>
+                    <p>Blogging about stuff, mostly tech.</p>
+                </div>
 
                 <div className="post-grid">
                     {posts.map(({ node }) => {
@@ -164,18 +155,3 @@ const Main = styled("div")`
     }
 `;
 
-const Intro = styled("div")`
-    display: flex;
-    gap: 24px;
-    align-items: center;
-
-    h1,
-    h2 {
-        line-height: 1;
-        margin-bottom: 10px;
-    }
-
-    img {
-        border-radius: 50%;
-    }
-`;

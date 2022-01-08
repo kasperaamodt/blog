@@ -16,24 +16,6 @@ async function fetchAPI(query, { variables } = {}) {
     return json.data;
 }
 
-export async function sendForm(name, email, select, message) {
-    const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify({
-            apikey: API_KEY,
-            name: name,
-            email: email,
-            mood: select,
-            message: message
-        })
-    });
-    return res?.json();
-}
-
 export async function getAllPostSlugs() {
     const data = await fetchAPI(`
     {
