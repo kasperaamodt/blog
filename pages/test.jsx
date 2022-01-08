@@ -7,17 +7,14 @@ import { formatDate } from "../utils/functions";
 
 export default function Test({ data }) {
     var count = 0;
-    
     for(var i in data) {
         for(var val in data [i]) {
             count = count + (data [i] [val]);
         }
     }
-
     const resJson = {
-        downloads: [count]
+        downloads: count
     }
-
     console.log(resJson)
 
     return (

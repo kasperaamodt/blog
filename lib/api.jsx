@@ -17,7 +17,7 @@ async function fetchAPI(query, { variables } = {}) {
 }
 
 export async function npmData() {
-    var res = await fetch("https://npm-stat.com/api/download-counts?author=kasperaamodt&from=2021-01-01&until=2022-01-08", {
+    const res = await fetch("https://npm-stat.com/api/download-counts?author=kasperaamodt&from=2021-01-01&until=2022-01-08", {
         method: 'GET',
         redirect: 'follow'
     });
