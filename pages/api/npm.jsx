@@ -10,11 +10,13 @@ async function npmData() {
             count = count + (data [i] [val]);
         }
     }
-    return {
-        downloads: [count]
-    };
+    return count;
+}
+
+const resJson = {
+    downloads: [npmData()]
 }
 
 module.exports = (req, res) => {
-    res.json(resJson());
+    res.json(resJson);
 }
