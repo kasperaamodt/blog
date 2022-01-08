@@ -34,6 +34,7 @@ const Nav = styled("nav")`
         line-height: 1;
         padding: 5px 10px;
         border-radius: 5px;
+        font-weight: 600;
 
         &:hover {
             background-color: var(--mode);

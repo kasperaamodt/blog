@@ -47,6 +47,14 @@ export default function Home({ posts }) {
                             >
                                 Brainify
                             </a>
+                            &nbsp;&{" "}
+                            <a
+                                href="https://aamodtgroup.com"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                AG
+                            </a>
                         </h2>
                         <p>Blogging about stuff, mostly tech.</p>
                     </div>
