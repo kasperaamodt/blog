@@ -14,3 +14,7 @@ export function metaDescription(str) {
 export function removeTags(str) {
     return str.toString().replace(/(<([^>]+)>)/ig, '');
 }
+
+export function metaFormat(str) {
+    return str.replaceAll(' ', '+');
+}
