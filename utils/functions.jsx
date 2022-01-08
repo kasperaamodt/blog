@@ -16,5 +16,5 @@ export function removeTags(str) {
 }
 
 export function metaFormat(str) {
-    return str.replaceAll(' ', '+');
+    return str.replace(/ /g, '+');
 }
