@@ -30,7 +30,7 @@ export default function Home({ posts }) {
                             Kasper Aamodt
                         </a>
                     </h1>
-                    <h2>
+                    <h2 style={{marginBottom: '5px'}}>
                         Developer at{" "}
                         <a
                             href="https://brainify.no"
