@@ -1,5 +1,10 @@
-async function npmDownloads() {
-    const res = await fetch("https://npm-stat.com/api/download-counts?author=kasperaamodt&from=2021-01-01&until=2022-01-08", {
+export async function npmStats() {
+    const today = new Date().toLocaleDateString("fr-CA", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+    const res = await fetch(`https://npm-stat.com/api/download-counts?author=kasperaamodt&from=2021-01-01&until=${today}`, {
         method: 'GET',
         redirect: 'follow'
     });
@@ -16,7 +21,7 @@ async function npmDownloads() {
     return resJson;
 }
 
-export default async function Downloads(req, res) {
-    const data = await npmDownloads();
+export default async function npmDownloads(req, res) {
+    const data = await npmStats();
     res.status(200).json(data);
 }

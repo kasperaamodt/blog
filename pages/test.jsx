@@ -1,22 +1,9 @@
 import Head from "next/head";
 import { styled } from "goober";
 import Header from "../components/header";
-import { npmData } from "../lib/api";
-import Link from "next/link";
-import { formatDate } from "../utils/functions";
+import { npmStats } from "./api/npm";
 
 export default function Test({ data }) {
-    var count = 0;
-    for(var i in data) {
-        for(var val in data [i]) {
-            count = count + (data [i] [val]);
-        }
-    }
-    const resJson = {
-        downloads: count
-    }
-    console.log(resJson)
-
     return (
         <>
             <Head>
@@ -27,14 +14,14 @@ export default function Test({ data }) {
 
             <Main>
                 <h1>NPM total downloads</h1>
-                <span>{count}</span>
+                <div>{data.downloads}</div>
             </Main>
         </>
     );
 }
 
-export async function getStaticProps() {
-    const data = await npmData();
+export async function getServerSideProps() {
+    const data = await npmStats();
 
     return {
         props: { data }
