@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
@@ -12,8 +14,6 @@ import {
     metaFormat
 } from "../../utils/functions";
 import PostGrid from "../../components/post-grid";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function Blog({ blog, blogs }) {
     const router = useRouter();
