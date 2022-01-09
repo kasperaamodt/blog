@@ -51,18 +51,21 @@ export default function Home({ posts }) {
                     <p>Blogging about stuff, mostly tech.</p>
                 </div>
 
-                <div className="post-grid">
-                    {posts.map(({ node }) => {
-                        return (
-                            <div className="post-card" key={node.slug}>
-                                <h3>{node.title}</h3>
-                                <span>{formatDate(node.date)}</span>
-                                <Link href={`/blog/` + node.slug} passHref>
-                                    <a aria-label={node.title}></a>
-                                </Link>
-                            </div>
-                        );
-                    })}
+                <div className="post-div">
+                    <h2 style={{marginBottom: '1rem'}}>Blog</h2>
+                    <div className="post-grid">
+                        {posts.map(({ node }) => {
+                            return (
+                                <div className="post-card" key={node.slug}>
+                                    <h3>{node.title}</h3>
+                                    <span>{formatDate(node.date)}</span>
+                                    <Link href={`/blog/` + node.slug} passHref>
+                                        <a aria-label={node.title}></a>
+                                    </Link>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
                 <div style={{ textAlign: "center", paddingTop: "12px" }}>
                     <Link href="/blog">View all</Link>
@@ -87,11 +90,14 @@ const Main = styled("div")`
     padding: 0 15px;
     padding-bottom: 2rem;
 
+    .post-div {
+        margin-top: 4rem;
+    }
+
     .post-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        margin-top: 80px;
 
         @media (max-width: 768px) {
             grid-template-columns: 100%;
