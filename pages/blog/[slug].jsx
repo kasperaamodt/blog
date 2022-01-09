@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export default function Blog({ blog, blogs }) {
     const router = useRouter();
-    blogs = blogs.edges;
+    blogs = blogs?.edges;
 
     if (!router.isFallback && !blog?.slug) {
         return <ErrorPage statusCode={404} />;
