@@ -10,9 +10,13 @@ import {
     removeTags,
     metaFormat
 } from "../../utils/functions";
+import PostGrid from "../../components/post-grid";
+import Link from "next/link";
 
-export default function Blog({ blog }) {
+
+export default function Blog({ blog, blogs }) {
     const router = useRouter();
+    blogs = blogs.edges;
 
     if (!router.isFallback && !blog?.slug) {
         return <ErrorPage statusCode={404} />;
@@ -58,13 +62,20 @@ export default function Blog({ blog }) {
                     <Header />
 
                     <Main>
-                        <span>{formatDate(blog.date)}</span>
+                        <span style={{fontWeight: "500"}}>{formatDate(blog.date)}</span>
                         <h1 style={{ marginTop: "0px" }}>{blog.title}</h1>
                         <div
                             dangerouslySetInnerHTML={{ __html: blog.content }}
                             style={{ marginBottom: "0px" }}
                         />
                     </Main>
+                    <Related>
+                        <h2 style={{ marginBottom: "1rem" }}>More to read</h2>
+                        <PostGrid posts={blogs} />
+                        <div style={{ textAlign: "center", paddingTop: "12px" }}>
+                            <Link href="/blog" passHref><a style={{fontWeight: "500"}}>View all</a></Link>
+                        </div>
+                    </Related>
                 </>
             )}
         </>
@@ -76,7 +87,8 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            blog: data.post
+            blog: data.post,
+            blogs: data.posts
         }
     };
 }
@@ -92,7 +104,7 @@ export async function getStaticPaths() {
 
 const Main = styled("div")`
     width: 100%;
-    max-width: 680px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
     padding-bottom: 2rem;
@@ -178,4 +190,12 @@ const Main = styled("div")`
             }
         }
     }
+`;
+
+const Related = styled("div")`
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 15px;
+    padding-bottom: 2rem;
 `;
