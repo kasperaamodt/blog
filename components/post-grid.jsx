@@ -17,7 +17,7 @@ export default function PostGrid({ posts }) {
                 );
             })}
         </Grid>
-    )
+    );
 }
 
 const Grid = styled("div")`

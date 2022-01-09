@@ -30,7 +30,7 @@ export default function Home({ posts }) {
                             Kasper Aamodt
                         </a>
                     </h1>
-                    <h2 style={{marginBottom: '5px'}}>
+                    <h2 style={{ marginBottom: "5px" }}>
                         Developer at{" "}
                         <a
                             href="https://brainify.no"
@@ -56,7 +56,9 @@ export default function Home({ posts }) {
                     <PostGrid posts={posts} />
                 </div>
                 <div style={{ textAlign: "center", paddingTop: "12px" }}>
-                    <Link href="/blog" passHref><a style={{ fontWeight: "500" }}>View all</a></Link>
+                    <Link href="/blog" passHref>
+                        <a style={{ fontWeight: "500" }}>View all</a>
+                    </Link>
                 </div>
             </Main>
         </>

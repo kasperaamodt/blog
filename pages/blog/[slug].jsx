@@ -3,6 +3,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
+import parse, { domToReact } from "html-react-parser";
 import Header from "../../components/header";
 import {
     formatDate,
@@ -12,7 +13,7 @@ import {
 } from "../../utils/functions";
 import PostGrid from "../../components/post-grid";
 import Link from "next/link";
-
+import Image from "next/image";
 
 export default function Blog({ blog, blogs }) {
     const router = useRouter();
@@ -27,6 +28,25 @@ export default function Blog({ blog, blogs }) {
         excerpt = metaDescription(excerpt);
         return excerpt;
     }
+
+    const options = {
+        replace: ({ name, attribs, children }) => {
+            if (name === "figure" && /wp-block-image/.test(attribs.class)) {
+                return <>{domToReact(children, options)}</>;
+            }
+
+            if (name === "img") {
+                return (
+                    <Image
+                        src={attribs.src}
+                        width={attribs.width}
+                        height={attribs.height}
+                        alt={attribs.alt ? attribs.alt : "Image - this image does not have an alt text, please let me know."}
+                    />
+                );
+            }
+        }
+    };
 
     return (
         <>
@@ -62,18 +82,23 @@ export default function Blog({ blog, blogs }) {
                     <Header />
 
                     <Main>
-                        <span style={{fontWeight: "500"}}>{formatDate(blog.date)}</span>
+                        <span style={{ fontWeight: "500" }}>
+                            {formatDate(blog.date)}
+                        </span>
                         <h1 style={{ marginTop: "0px" }}>{blog.title}</h1>
-                        <div
-                            dangerouslySetInnerHTML={{ __html: blog.content }}
-                            style={{ marginBottom: "0px" }}
-                        />
+                        <div style={{ marginBottom: "0px" }}>
+                            {parse(blog.content, options)}
+                        </div>
                     </Main>
                     <Related>
                         <h2 style={{ marginBottom: "1rem" }}>More to read</h2>
                         <PostGrid posts={blogs} />
-                        <div style={{ textAlign: "center", paddingTop: "12px" }}>
-                            <Link href="/blog" passHref><a style={{fontWeight: "500"}}>View all</a></Link>
+                        <div
+                            style={{ textAlign: "center", paddingTop: "12px" }}
+                        >
+                            <Link href="/blog" passHref>
+                                <a style={{ fontWeight: "500" }}>View all</a>
+                            </Link>
                         </div>
                     </Related>
                 </>
