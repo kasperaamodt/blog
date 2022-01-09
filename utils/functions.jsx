@@ -8,13 +8,13 @@ export function formatDate(date) {
 }
 
 export function metaDescription(str) {
-    return str.replace(/^(.{135}[^\s]*).*/, "$1").trim() + '...';
-};
+    return str.replace(/^(.{135}[^\s]*).*/, "$1").trim() + "...";
+}
 
 export function removeTags(str) {
-    return str.toString().replace(/(<([^>]+)>)/ig, '');
+    return str.toString().replace(/(<([^>]+)>)/gi, "");
 }
 
 export function metaFormat(str) {
-    return str.replace(/ /g, '+');
+    return str.replace(/ /g, "+");
 }

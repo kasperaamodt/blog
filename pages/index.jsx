@@ -52,7 +52,7 @@ export default function Home({ posts }) {
                 </div>
 
                 <div className="post-div">
-                    <h2 style={{marginBottom: '1rem'}}>Blog</h2>
+                    <h2 style={{ marginBottom: "1rem" }}>Blog</h2>
                     <div className="post-grid">
                         {posts.map(({ node }) => {
                             return (
@@ -160,4 +160,3 @@ const Main = styled("div")`
         }
     }
 `;
-

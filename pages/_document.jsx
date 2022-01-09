@@ -18,7 +18,12 @@ export default class MyDocument extends Document {
                             __html: " " + this.props.css
                         }}
                     />
-                    <script async defer data-domain="aamodt.xyz" src="https://analytics.brainify.no/js/plausible.js" />
+                    <script
+                        async
+                        defer
+                        data-domain="aamodt.xyz"
+                        src="https://analytics.brainify.no/js/plausible.js"
+                    />
                 </Head>
                 <body>
                     <Main />

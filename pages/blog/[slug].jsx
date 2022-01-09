@@ -4,7 +4,12 @@ import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
 import Header from "../../components/header";
-import { formatDate, metaDescription, removeTags, metaFormat } from "../../utils/functions";
+import {
+    formatDate,
+    metaDescription,
+    removeTags,
+    metaFormat
+} from "../../utils/functions";
 
 export default function Blog({ blog }) {
     const router = useRouter();
@@ -27,10 +32,27 @@ export default function Blog({ blog }) {
                 <>
                     <Head>
                         <title>{blog.title} - Kasper Aamodt</title>
-                        <meta content={makeExcerpt(blog.excerpt)} name="description" />
-                        <meta property="twitter:image" content={"https://api.placid.app/u/doikjtzbg?&title[text]=" + metaFormat(blog.title) + "&date[text]=" + formatDate(blog.date)} />
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:title" content={blog.title + " - Kasper Aamodt"} />
+                        <meta
+                            content={makeExcerpt(blog.excerpt)}
+                            name="description"
+                        />
+                        <meta
+                            property="twitter:image"
+                            content={
+                                "https://api.placid.app/u/doikjtzbg?&title[text]=" +
+                                metaFormat(blog.title) +
+                                "&date[text]=" +
+                                formatDate(blog.date)
+                            }
+                        />
+                        <meta
+                            name="twitter:card"
+                            content="summary_large_image"
+                        />
+                        <meta
+                            name="twitter:title"
+                            content={blog.title + " - Kasper Aamodt"}
+                        />
                     </Head>
 
                     <Header />
