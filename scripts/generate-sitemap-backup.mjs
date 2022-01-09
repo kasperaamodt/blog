@@ -1,6 +1,7 @@
 import { writeFileSync } from "fs";
 import { globby } from "globby";
 import prettier from "prettier";
+import { getAllPostSlugs } from "../lib/api";
 
 async function generate() {
     const prettierConfig = await prettier.resolveConfig("./.prettierrc.js");
@@ -11,6 +12,7 @@ async function generate() {
         "!pages/api",
         "!pages/404.jsx"
     ]);
+    const blogs = await getAllPostSlugs();
 
     const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -26,6 +28,15 @@ async function generate() {
                 return `
                     <url>
                         <loc>${`https://aamodt.xyz${route}`}</loc>
+                    </url>
+                `;
+            })
+            .join("")}
+        ${blogs.edges
+            .map(({ node }) => {
+                return `
+                    <url>
+                        <loc>${`https://aamodt.xyz/blog/${node.slug}`}</loc>
                     </url>
                 `;
             })
