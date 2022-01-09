@@ -16,14 +16,6 @@ async function fetchAPI(query, { variables } = {}) {
     return json.data;
 }
 
-export async function npmData() {
-    const res = await fetch("https://npm-stat.com/api/download-counts?author=kasperaamodt&from=2021-01-01&until=2022-01-08", {
-        method: 'GET',
-        redirect: 'follow'
-    });
-    return res.json();
-}
-
 export async function getAllPostSlugs() {
     const data = await fetchAPI(`
     {
