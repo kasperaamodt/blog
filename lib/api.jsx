@@ -75,7 +75,7 @@ export async function getAllPosts() {
 
 export async function getPostAndMorePosts(slug) {
     const data = await fetchAPI(
-    `
+        `
     fragment PostFields on Post {
         title
         excerpt
@@ -104,8 +104,8 @@ export async function getPostAndMorePosts(slug) {
         {
             variables: {
                 id: slug,
-                idType: 'SLUG',
-            },
+                idType: "SLUG"
+            }
         }
     );
     data.posts.edges = data.posts.edges.filter(
