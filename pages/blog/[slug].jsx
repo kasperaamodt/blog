@@ -29,10 +29,10 @@ export default function Blog({ blog, blogs }) {
         return excerpt;
     }
 
-    const options = {
+    const replaceImage = {
         replace: ({ name, attribs, children }) => {
             if (name === "figure" && /wp-block-image/.test(attribs.class)) {
-                return <>{domToReact(children, options)}</>;
+                return <>{domToReact(children, replaceImage)}</>;
             }
 
             if (name === "img") {
@@ -87,7 +87,7 @@ export default function Blog({ blog, blogs }) {
                         </span>
                         <h1 style={{ marginTop: "0px" }}>{blog.title}</h1>
                         <div style={{ marginBottom: "0px" }}>
-                            {parse(blog.content, options)}
+                            {parse(blog.content, replaceImage)}
                         </div>
                     </Main>
                     <Related>

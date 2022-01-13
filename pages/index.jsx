@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { styled } from "goober";
 import Header from "../components/header";
 import { getPostsForHome } from "../lib/api";
