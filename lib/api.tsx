@@ -1,6 +1,6 @@
 const API_URL = "https://wp.aamodt.xyz/graphql";
 
-async function fetchAPI(query, { variables } = {}) {
+async function fetchAPI(query: string, { variables = {} } = {}) {
     const headers = { "Content-Type": "application/json" };
 
     const res = await fetch(API_URL, {
@@ -73,7 +73,7 @@ export async function getAllPosts() {
     return data?.posts;
 }
 
-export async function getPostAndMorePosts(slug) {
+export async function getPostAndMorePosts(slug: string) {
     const data = await fetchAPI(
         `
     fragment PostFields on Post {

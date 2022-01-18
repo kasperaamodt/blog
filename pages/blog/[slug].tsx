@@ -5,7 +5,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
-import parse, { domToReact } from "html-react-parser";
+import parse, { domToReact, HTMLReactParserOptions, Element } from "html-react-parser";
 import Header from "../../components/header";
 import {
     formatDate,
@@ -23,25 +23,25 @@ export default function Blog({ blog, blogs }) {
         return <ErrorPage statusCode={404} />;
     }
 
-    function makeExcerpt(desc) {
+    function makeExcerpt(desc: string) {
         var excerpt = removeTags(desc);
         excerpt = metaDescription(excerpt);
         return excerpt;
     }
 
-    const replaceImage = {
-        replace: ({ name, attribs, children }) => {
-            if (name === "figure" && /wp-block-image/.test(attribs.class)) {
-                return <>{domToReact(children, replaceImage)}</>;
+    const replaceImage: HTMLReactParserOptions = {
+        replace: domNode => {
+            if (domNode instanceof Element && domNode.attribs.name === "figure" && /wp-block-image/.test(domNode.attribs.class)) {
+                return <>{domToReact(domNode.children, replaceImage)}</>;
             }
 
-            if (name === "img") {
+            if (domNode instanceof Element && domNode.attribs.name === "img") {
                 return (
                     <Image
-                        src={attribs.src}
-                        width={attribs.width}
-                        height={attribs.height}
-                        alt={attribs.alt ? attribs.alt : "Image - this image does not have an alt text, please let me know."}
+                        src={domNode.attribs.src}
+                        width={domNode.attribs.width}
+                        height={domNode.attribs.height}
+                        alt={domNode.attribs.alt ? domNode.attribs.alt : "Image - this image does not have an alt text, please let me know."}
                     />
                 );
             }
