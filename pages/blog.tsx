@@ -1,8 +1,9 @@
 import Head from "next/head";
+import { GetStaticProps } from 'next'
+import Link from "next/link";
 import { styled } from "goober";
 import Header from "../components/header";
 import { getAllPosts } from "../lib/api";
-import Link from "next/link";
 import { formatDate } from "../utils/functions";
 
 export default function Blog({ posts }) {
@@ -32,7 +33,7 @@ export default function Blog({ posts }) {
     );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
     const allPosts = await getAllPosts();
 
     return {

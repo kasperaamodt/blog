@@ -73,7 +73,7 @@ export async function getAllPosts() {
     return data?.posts;
 }
 
-export async function getPostAndMorePosts(slug: string) {
+export async function getPostAndMorePosts(slug: any) {
     const data = await fetchAPI(
         `
     fragment PostFields on Post {

@@ -14,9 +14,7 @@ export default class MyDocument extends Document {
                     <link rel="icon" href="/images/icon.png" />
                     <style
                         id={"_goober"}
-                        dangerouslySetInnerHTML={{
-                            __html: " " + this.props.css
-                        }}
+                        dangerouslySetInnerHTML={{ __html: " " + this.props.css }}
                     />
                     <script
                         async

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
 import parse, { domToReact, HTMLReactParserOptions, Element } from "html-react-parser";
@@ -107,7 +108,7 @@ export default function Blog({ blog, blogs }) {
     );
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({params}) => {
     const data = await getPostAndMorePosts(params.slug);
 
     return {
@@ -118,7 +119,7 @@ export async function getStaticProps({ params }) {
     };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const allPosts = await getAllPostSlugs();
 
     return {
