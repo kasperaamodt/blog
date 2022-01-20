@@ -29,6 +29,8 @@ export default function Blog({ blog, blogs }) {
         return excerpt;
     }
 
+    console.log()
+
     const replaceImage = {
         replace: ({ name, attribs, children }) => {
             if (name === "figure" && /wp-block-image/.test(attribs.class)) {
@@ -62,12 +64,7 @@ export default function Blog({ blog, blogs }) {
                         />
                         <meta
                             property="twitter:image"
-                            content={
-                                "https://api.placid.app/u/doikjtzbg?&title[text]=" +
-                                metaFormat(blog.title) +
-                                "&date[text]=" +
-                                formatDate(blog.date)
-                            }
+                            content={blog?.seo.twitterImage.mediaItemUrl ? blog?.seo.twitterImage.mediaItemUrl : null}
                         />
                         <meta
                             name="twitter:card"
