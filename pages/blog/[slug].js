@@ -29,8 +29,6 @@ export default function Blog({ blog, blogs }) {
         return excerpt;
     }
 
-    console.log()
-
     const replaceImage = {
         replace: ({ name, attribs, children }) => {
             if (name === "figure" && /wp-block-image/.test(attribs.class)) {
@@ -64,7 +62,7 @@ export default function Blog({ blog, blogs }) {
                         />
                         <meta
                             property="twitter:image"
-                            content={blog?.seo.twitterImage.mediaItemUrl ? blog?.seo.twitterImage.mediaItemUrl : null}
+                            content={blog.seo.twitterImage ? blog.seo.twitterImage.mediaItemUrl : null}
                         />
                         <meta
                             name="twitter:card"
