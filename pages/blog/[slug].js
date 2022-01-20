@@ -87,6 +87,7 @@ export default function Blog({ blog, blogs }) {
                                 height={blog.featuredImage.node.mediaDetails.height}
                                 width={blog.featuredImage.node.mediaDetails.width}
                                 alt="Hero image"
+                                priority
                             />
                         )}
                         <div style={{ marginBottom: "0px" }}>
