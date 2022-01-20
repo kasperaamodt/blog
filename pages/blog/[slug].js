@@ -81,6 +81,14 @@ export default function Blog({ blog, blogs }) {
                             {formatDate(blog.date)}
                         </span>
                         <h1 style={{ marginTop: "0px" }}>{blog.title}</h1>
+                        {blog.featuredImage && (
+                            <Image 
+                                src={blog.featuredImage.node.sourceUrl}
+                                height={blog.featuredImage.node.mediaDetails.height}
+                                width={blog.featuredImage.node.mediaDetails.width}
+                                alt="Hero image"
+                            />
+                        )}
                         <div style={{ marginBottom: "0px" }}>
                             {parse(blog.content, replaceImage)}
                         </div>
