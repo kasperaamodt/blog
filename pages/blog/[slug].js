@@ -10,8 +10,7 @@ import Header from "../../components/header";
 import {
     formatDate,
     metaDescription,
-    removeTags,
-    metaFormat
+    removeTags
 } from "../../utils/functions";
 import PostGrid from "../../components/post-grid";
 
