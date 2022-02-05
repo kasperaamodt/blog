@@ -7,6 +7,7 @@ import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
 import { styled } from "goober";
 import parse, { domToReact } from "html-react-parser";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 import {
     formatDate,
     metaDescription,
@@ -104,6 +105,8 @@ export default function Blog({ blog, blogs }) {
                             </Link>
                         </div>
                     </Related>
+
+                    <Footer />
                 </>
             )}
         </>
