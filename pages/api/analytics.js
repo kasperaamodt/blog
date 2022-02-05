@@ -4,7 +4,7 @@ export default async function handler(req, res) {
         {
             method: "GET",
             headers: {
-                Authorization: `Bearer BIkrSeOydFyecyEVueT4W7QZIoYaACBd2isaDTe4tb2b7NZDCjUoqr9odqt343Ww`
+                Authorization: `Bearer ${process.env.PLAUSIBLE_API}`
             }
         }
     );
