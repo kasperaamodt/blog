@@ -8,12 +8,9 @@ import { styled } from "goober";
 import parse, { domToReact } from "html-react-parser";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import {
-    formatDate,
-    metaDescription,
-    removeTags
-} from "../../utils/functions";
+import { formatDate, metaDescription, removeTags } from "../../utils/functions";
 import PostGrid from "../../components/post-grid";
+import Button from "../../components/button";
 
 export default function Blog({ blog, blogs }) {
     const router = useRouter();
@@ -41,7 +38,11 @@ export default function Blog({ blog, blogs }) {
                         src={attribs.src}
                         width={attribs.width}
                         height={attribs.height}
-                        alt={attribs.alt ? attribs.alt : "Image - this image does not have an alt text, please let me know."}
+                        alt={
+                            attribs.alt
+                                ? attribs.alt
+                                : "Image - this image does not have an alt text, please let me know."
+                        }
                     />
                 );
             }
@@ -62,7 +63,11 @@ export default function Blog({ blog, blogs }) {
                         />
                         <meta
                             property="twitter:image"
-                            content={blog.seo.twitterImage ? blog.seo.twitterImage.mediaItemUrl : null}
+                            content={
+                                blog.seo.twitterImage
+                                    ? blog.seo.twitterImage.mediaItemUrl
+                                    : null
+                            }
                         />
                         <meta
                             name="twitter:card"
@@ -82,10 +87,14 @@ export default function Blog({ blog, blogs }) {
                         </span>
                         <h1 style={{ marginTop: "0px" }}>{blog.title}</h1>
                         {blog.featuredImage && (
-                            <Image 
+                            <Image
                                 src={blog.featuredImage.node.sourceUrl}
-                                height={blog.featuredImage.node.mediaDetails.height}
-                                width={blog.featuredImage.node.mediaDetails.width}
+                                height={
+                                    blog.featuredImage.node.mediaDetails.height
+                                }
+                                width={
+                                    blog.featuredImage.node.mediaDetails.width
+                                }
                                 alt="Hero image"
                                 priority
                             />
@@ -98,11 +107,13 @@ export default function Blog({ blog, blogs }) {
                         <h2 style={{ marginBottom: "1rem" }}>More to read</h2>
                         <PostGrid posts={blogs} />
                         <div
-                            style={{ textAlign: "center", paddingTop: "12px" }}
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                paddingTop: "1rem"
+                            }}
                         >
-                            <Link href="/blog" passHref>
-                                <a style={{ fontWeight: "500" }}>View all</a>
-                            </Link>
+                            <Button text="View all" link="/blog" />
                         </div>
                     </Related>
 
@@ -228,5 +239,4 @@ const Related = styled("div")`
     max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
-    padding-bottom: 2rem;
 `;

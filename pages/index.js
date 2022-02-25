@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import { getPostsForHome } from "../lib/api";
 import Link from "next/link";
 import PostGrid from "../components/post-grid";
+import Button from "../components/button";
 
 export default function Home({ posts }) {
     return (
@@ -55,10 +56,8 @@ export default function Home({ posts }) {
                     <h2 style={{ marginBottom: "1rem" }}>Blog</h2>
                     <PostGrid posts={posts} />
                 </div>
-                <div style={{ textAlign: "center", paddingTop: "12px" }}>
-                    <Link href="/blog" passHref>
-                        <a style={{ fontWeight: "500" }}>View all</a>
-                    </Link>
+                <div style={{ display: "flex", justifyContent: "center", paddingTop: "1rem" }}>
+                    <Button text="View all" link="/blog" />
                 </div>
             </Main>
 
@@ -80,7 +79,6 @@ const Main = styled("div")`
     max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
-    padding-bottom: 2rem;
 
     .post-div {
         margin-top: 4rem;
