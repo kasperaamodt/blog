@@ -69,7 +69,7 @@ export async function getStaticProps({ params = {} } = {}) {
 
     return {
         props: {
-            posts: allPosts.edges,
+            posts: allPosts?.edges,
             categories: AllCategories
         }
     };
