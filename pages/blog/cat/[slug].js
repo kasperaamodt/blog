@@ -2,7 +2,7 @@ import Head from "next/head";
 import { styled } from "goober";
 import Header from "@components/header";
 import Footer from "@components/footer";
-import { getAllPosts, getAllCategories } from "@lib/api";
+import { getCategoryBySlug, getAllPostsByCategory, getAllCategories } from "@lib/api";
 import Link from "next/link";
 import { formatDate } from "@utils/functions";
 import { useRouter } from "next/router";
@@ -62,8 +62,9 @@ export default function Blog({ posts, categories }) {
     );
 }
 
-export async function getStaticProps() {
-    const allPosts = await getAllPosts();
+export async function getStaticProps({ params }) {
+    const cat = await getCategoryBySlug(params?.slug);
+    const allPosts = await getAllPostsByCategory(cat?.categoryId);
     const AllCategories = await getAllCategories();
 
     return {
@@ -71,6 +72,17 @@ export async function getStaticProps() {
             posts: allPosts.edges,
             categories: AllCategories
         }
+    };
+}
+
+export async function getStaticPaths() {
+    const AllCategories = await getAllCategories();
+
+    return {
+        paths:
+            AllCategories.edges.map(({ node }) => `/blog/cat/${node.slug}`) ||
+            [],
+        fallback: true
     };
 }
 
