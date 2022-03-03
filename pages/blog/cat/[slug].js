@@ -62,7 +62,7 @@ export default function Blog({ posts, categories }) {
     );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params = {} } = {}) {
     const cat = await getCategoryBySlug(params?.slug);
     const allPosts = await getAllPostsByCategory(cat?.categoryId);
     const AllCategories = await getAllCategories();
