@@ -44,7 +44,7 @@ export default function Blog({ posts, categories }) {
                             );
                         })}
                 </Categories>
-                {posts.map(({ node }) => {
+                {posts.edges.map(({ node }) => {
                     return (
                         <div className="post-card" key={node.slug}>
                             <h2> {node.title}</h2>
@@ -69,7 +69,7 @@ export async function getStaticProps({ params = {} } = {}) {
 
     return {
         props: {
-            posts: allPosts?.edges,
+            posts: allPosts,
             categories: AllCategories
         }
     };
