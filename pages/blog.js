@@ -8,13 +8,13 @@ import { formatDate } from "@utils/functions";
 import { useRouter } from "next/router";
 
 export default function Blog({ posts, categories }) {
-    const NavLink = ({ href, key, name }) => {
+    const NavLink = ({ href, name }) => {
         const { asPath } = useRouter();
         const ariaCurrent = href === asPath ? "page" : undefined;
 
         return (
-            <Link href={href} key={key} passHref>
-                <Cat aria-current={ariaCurrent}>{name}</Cat>
+            <Link href={href} passHref>
+                <a aria-current={ariaCurrent}>{name}</a>
             </Link>
         );
     };
@@ -29,22 +29,19 @@ export default function Blog({ posts, categories }) {
 
             <Main>
                 <Categories>
-                    <NavLink
-                        href="/blog"
-                        name="All"
-                    />
-                    {categories.edges.length !== 0 &&
-                        categories.edges.map(({ node }) => {
-                            return (
-                                <NavLink
-                                    href={`/blog/cat/` + node.slug}
-                                    key={node.categoryId}
-                                    name={node.name}
-                                />
-                            );
-                        })}
+                    <NavLink href="/blog" name="All" />
+                    {categories?.map(({ node }) => {
+                        return (
+                            <NavLink
+                                href={`/blog/cat/` + node.slug}
+                                key={node.categoryId}
+                                name={node.name}
+                            />
+                        );
+                        x;
+                    })}
                 </Categories>
-                {posts.map(({ node }) => {
+                {posts?.map(({ node }) => {
                     return (
                         <div className="post-card" key={node.slug}>
                             <h2> {node.title}</h2>
@@ -63,13 +60,13 @@ export default function Blog({ posts, categories }) {
 }
 
 export async function getStaticProps() {
-    const allPosts = await getAllPosts();
-    const AllCategories = await getAllCategories();
+    const posts = await getAllPosts();
+    const categories = await getAllCategories();
 
     return {
         props: {
-            posts: allPosts.edges,
-            categories: AllCategories
+            posts,
+            categories
         }
     };
 }
@@ -114,19 +111,19 @@ const Main = styled("div")`
 const Categories = styled("div")`
     display: flex;
     gap: 0.5rem;
-`;
 
-const Cat = styled("a")`
-    text-decoration: none;
-    border: 2px solid;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.25rem 0.5rem;
+    a {
+        text-decoration: none;
+        border: 2px solid;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.25rem 0.5rem;
 
-    &[aria-current="page"] {
-        background-color: var(--foreground);
-        color: var(--background);
-        border: 1px solid var(--foreground);
+        &[aria-current="page"] {
+            background-color: var(--foreground);
+            color: var(--background);
+            border: 1px solid var(--foreground);
+        }
     }
 `;
