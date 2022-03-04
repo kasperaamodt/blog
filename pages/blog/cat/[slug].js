@@ -66,7 +66,6 @@ export async function getStaticProps({ params = {} } = {}) {
     const cat = await getCategoryBySlug(params?.slug);
     const posts = await getAllPostsByCategory(cat?.categoryId);
     const categories = await getAllCategories();
-    console.log(cat);
 
     return {
         props: {
