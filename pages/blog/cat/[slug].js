@@ -64,11 +64,12 @@ export default function Blog({ posts, categories }) {
 }
 
 export async function getStaticProps({ params = {} } = {}) {
-    const allPosts = await getAllPostsByCategory(params?.categoryId);
+    const cat = await getCategoryBySlug(params?.slug);
+    const allPosts = await getAllPostsByCategory(cat?.categoryId);
     const AllCategories = await getAllCategories();
-    console.log(params?.categoryId);
-    console.log(allPosts);
-    console.log(AllCategories);
+    console.log("cat" + cat);
+    console.log("allPost" + allPosts);
+    console.log("allCat" + AllCategories);
 
     return {
         props: {
