@@ -34,8 +34,7 @@ export default function Blog({ posts, categories }) {
             <Main>
                 <Categories>
                     <NavLink href="/blog" name="All" />
-                    {categories?.edges.length !== 0 &&
-                        categories.edges.map(({ node }) => {
+                    {categories?.map(({ node }) => {
                             return (
                                 <NavLink
                                     href={`/blog/cat/` + node.slug}
@@ -65,14 +64,14 @@ export default function Blog({ posts, categories }) {
 
 export async function getStaticProps({ params = {} } = {}) {
     const cat = await getCategoryBySlug(params?.slug);
-    const allPosts = await getAllPostsByCategory(cat?.categoryId);
-    const AllCategories = await getAllCategories();
+    const posts = await getAllPostsByCategory(cat?.categoryId);
+    const categories = await getAllCategories();
     console.log(cat);
 
     return {
         props: {
-            posts: allPosts.edges,
-            categories: AllCategories
+            posts,
+            categories
         }
     };
 }
@@ -82,7 +81,7 @@ export async function getStaticPaths() {
 
     return {
         paths:
-            AllCategories.edges.map(({ node }) => `/blog/cat/${node.slug}`) ||
+            AllCategories?.map(({ node }) => `/blog/cat/${node.slug}`) ||
             [],
         fallback: true
     };
