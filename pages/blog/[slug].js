@@ -3,14 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
-import { getAllPostSlugs, getPostAndMorePosts } from "../../lib/api";
+import { getAllPostSlugs, getPostAndMorePosts } from "@lib/api";
 import { styled } from "goober";
 import parse, { domToReact } from "html-react-parser";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
-import { formatDate, metaDescription, removeTags } from "../../utils/functions";
-import PostGrid from "../../components/post-grid";
-import Button from "../../components/button";
+import Header from "@components/header";
+import Footer from "@components/footer";
+import { formatDate, metaDescription, removeTags } from "@utils/functions";
+import PostGrid from "@components/post-grid";
+import Button from "@components/button";
 
 export default function Blog({ blog, blogs }) {
     const router = useRouter();

@@ -2,7 +2,11 @@ import Head from "next/head";
 import { styled } from "goober";
 import Header from "@components/header";
 import Footer from "@components/footer";
-import { getAllPosts, getAllCategories } from "@lib/api";
+import {
+    getCategoryBySlug,
+    getAllPostsByCategory,
+    getAllCategories
+} from "@lib/api";
 import Link from "next/link";
 import { formatDate } from "@utils/functions";
 import { useRouter } from "next/router";
@@ -31,15 +35,14 @@ export default function Blog({ posts, categories }) {
                 <Categories>
                     <NavLink href="/blog" name="All" />
                     {categories?.map(({ node }) => {
-                        return (
-                            <NavLink
-                                href={`/blog/cat/` + node.slug}
-                                key={node.categoryId}
-                                name={node.name}
-                            />
-                        );
-                        x;
-                    })}
+                            return (
+                                <NavLink
+                                    href={`/blog/cat/` + node.slug}
+                                    key={node.categoryId}
+                                    name={node.name}
+                                />
+                            );
+                        })}
                 </Categories>
                 {posts?.map(({ node }) => {
                     return (
@@ -59,8 +62,9 @@ export default function Blog({ posts, categories }) {
     );
 }
 
-export async function getStaticProps() {
-    const posts = await getAllPosts();
+export async function getStaticProps({ params = {} } = {}) {
+    const cat = await getCategoryBySlug(params?.slug);
+    const posts = await getAllPostsByCategory(cat?.categoryId);
     const categories = await getAllCategories();
 
     return {
@@ -68,6 +72,17 @@ export async function getStaticProps() {
             posts,
             categories
         }
+    };
+}
+
+export async function getStaticPaths() {
+    const AllCategories = await getAllCategories();
+
+    return {
+        paths:
+            AllCategories?.map(({ node }) => `/blog/cat/${node.slug}`) ||
+            [],
+        fallback: true
     };
 }
 
