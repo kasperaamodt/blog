@@ -32,19 +32,6 @@ export default function Blog({ posts, categories }) {
             <Header />
 
             <Main>
-                <Categories>
-                    <NavLink href="/blog" name="All" />
-                    {categories.edges.length !== 0 &&
-                        categories.edges.map(({ node }) => {
-                            return (
-                                <NavLink
-                                    href={`/blog/cat/` + node.slug}
-                                    key={node.categoryId}
-                                    name={node.name}
-                                />
-                            );
-                        })}
-                </Categories>
                 {posts.map(({ node }) => {
                     return (
                         <div className="post-card" key={node.slug}>
