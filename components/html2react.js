@@ -16,7 +16,7 @@ export default function Html2react({ html } = html) {
             }
 
             if (name === "figure" && /wp-block-image/.test(attribs.class)) {
-                return <>{domToReact(children, replaceImage)}</>;
+                return <>{domToReact(children, content)}</>;
             }
 
             if (name === "img") {
