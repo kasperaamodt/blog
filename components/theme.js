@@ -11,13 +11,14 @@ export default function ThemeChanger() {
     if (!mounted) return <div style={{ height: "34px", width: "34px" }}></div>;
 
     return (
-        <div>
+        <Div className="tooltip">
             <Button
                 onClick={() =>
                     setTheme(resolvedTheme === "light" ? "dark" : "light")
                 }
             />
-        </div>
+            <span className="tooltiptext">Activate {resolvedTheme === "light" ? "dark" : "light"} mode</span>
+        </Div>
     );
 }
 
@@ -28,4 +29,31 @@ const Button = styled("div")`
     cursor: pointer;
     height: 24px;
     width: 24px;
+`;
+
+const Div = styled("div")`
+    &.tooltip {
+        position: relative;
+    }
+    &.tooltip .tooltiptext {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s;
+        background-color: var(--foreground);
+        color: var(--background);
+        text-align: center;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        width: auto;
+        bottom: -150%;
+        right: 0;
+        white-space: nowrap;
+    }
+    &.tooltip:hover .tooltiptext, &.tooltip:focus .tooltiptext {
+        opacity: 1;
+        visibility: visible;
+    }
 `;

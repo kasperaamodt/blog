@@ -187,6 +187,7 @@ const Main = styled("div")`
         position: relative;
         padding: 0.8rem 1rem;
         background-color: var(--background);
+        transition: background .5s;
         background-clip: padding-box;
         border: solid 2px transparent;
         border-radius: 5px;
