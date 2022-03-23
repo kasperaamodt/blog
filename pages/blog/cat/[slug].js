@@ -35,14 +35,14 @@ export default function Blog({ posts, categories }) {
                 <Categories>
                     <NavLink href="/blog" name="All" />
                     {categories?.map(({ node }) => {
-                            return (
-                                <NavLink
-                                    href={`/blog/cat/` + node.slug}
-                                    key={node.categoryId}
-                                    name={node.name}
-                                />
-                            );
-                        })}
+                        return (
+                            <NavLink
+                                href={`/blog/cat/` + node.slug}
+                                key={node.categoryId}
+                                name={node.name}
+                            />
+                        );
+                    })}
                 </Categories>
                 {posts?.map(({ node }) => {
                     return (
@@ -79,9 +79,7 @@ export async function getStaticPaths() {
     const AllCategories = await getAllCategories();
 
     return {
-        paths:
-            AllCategories?.map(({ node }) => `/blog/cat/${node.slug}`) ||
-            [],
+        paths: AllCategories?.map(({ node }) => `/blog/cat/${node.slug}`) || [],
         fallback: true
     };
 }

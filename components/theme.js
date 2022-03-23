@@ -17,7 +17,9 @@ export default function ThemeChanger() {
                     setTheme(resolvedTheme === "light" ? "dark" : "light")
                 }
             />
-            <span className="tooltiptext">Activate {resolvedTheme === "light" ? "dark" : "light"} mode</span>
+            <span className="tooltiptext">
+                Activate {resolvedTheme === "light" ? "dark" : "light"} mode
+            </span>
         </Div>
     );
 }
@@ -52,7 +54,8 @@ const Div = styled("div")`
         right: 0;
         white-space: nowrap;
     }
-    &.tooltip:hover .tooltiptext, &.tooltip:focus .tooltiptext {
+    &.tooltip:hover .tooltiptext,
+    &.tooltip:focus .tooltiptext {
         opacity: 1;
         visibility: visible;
     }

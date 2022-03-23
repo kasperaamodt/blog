@@ -1,15 +1,23 @@
 import { styled } from "goober";
-import { formatDate } from "../utils/functions";
 import Link from "next/link";
+import Html2react from "@components/html2react";
+import { removeTags, metaDescription } from "@utils/functions";
 
 export default function PostGrid({ posts }) {
+    function makeExcerpt(desc) {
+        var excerpt = removeTags(desc);
+        excerpt = metaDescription(excerpt);
+        return excerpt;
+    }
     return (
         <Grid>
             {posts.map(({ node }) => {
                 return (
-                    <div className="post-card" key={node.slug}>
+                    <div className="featured-card" key={node.slug}>
                         <h3>{node.title}</h3>
-                        <span>{formatDate(node.date)}</span>
+                        <span>
+                            <Html2react html={makeExcerpt(node.excerpt)} />
+                        </span>
                         <Link href={`/blog/` + node.slug} passHref>
                             <a aria-label={node.title}></a>
                         </Link>
@@ -22,52 +30,21 @@ export default function PostGrid({ posts }) {
 
 const Grid = styled("div")`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: 100%;
+    gap: 2rem;
 
-    @media (max-width: 768px) {
-        grid-template-columns: 100%;
-    }
-
-    .post-card {
+    .featured-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: background .5s;
+        transition: background 0.5s;
         position: relative;
         padding: 20px;
-        background-color: var(--background);
-        background-clip: padding-box;
-        border: solid 5px transparent;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(8px);
         border-radius: 10px;
-
-        &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            margin: -5px;
-            border-radius: inherit;
-            background: linear-gradient(
-                to bottom right,
-                rgb(237, 34, 36),
-                rgb(243, 91, 34),
-                rgb(249, 150, 33),
-                rgb(245, 193, 30),
-                rgb(241, 235, 27) 27%,
-                rgb(241, 235, 27),
-                rgb(241, 235, 27) 33%,
-                rgb(99, 199, 32),
-                rgb(12, 155, 73),
-                rgb(33, 135, 141),
-                rgb(57, 84, 165),
-                rgb(97, 55, 155),
-                rgb(147, 40, 142)
-            );
-        }
+        border: 1px solid rgba(255, 255, 255, 0.18);
 
         a {
             position: absolute;

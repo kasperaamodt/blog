@@ -69,10 +69,10 @@ body {
         "Segoe UI Symbol";
     background: var(--background);
     color: var(--foreground);
-    transition: .5s;
+    transition: 0.5s;
 }
 
 a {
     color: var(--foreground);
-    transition: .5s;
+    transition: 0.5s;
 }

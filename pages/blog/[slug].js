@@ -1,11 +1,10 @@
 import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import { getAllPostSlugs, getPostAndMorePosts } from "@lib/api";
 import { styled } from "goober";
-import parse, { domToReact } from "html-react-parser";
+import Html2react from "@components/html2react";
 import Header from "@components/header";
 import Footer from "@components/footer";
 import { formatDate, metaDescription, removeTags } from "@utils/functions";
@@ -25,29 +24,6 @@ export default function Blog({ blog, blogs }) {
         excerpt = metaDescription(excerpt);
         return excerpt;
     }
-
-    const replaceImage = {
-        replace: ({ name, attribs, children }) => {
-            if (name === "figure" && /wp-block-image/.test(attribs.class)) {
-                return <>{domToReact(children, replaceImage)}</>;
-            }
-
-            if (name === "img") {
-                return (
-                    <Image
-                        src={attribs.src}
-                        width={attribs.width}
-                        height={attribs.height}
-                        alt={
-                            attribs.alt
-                                ? attribs.alt
-                                : "Image - this image does not have an alt text, please let me know."
-                        }
-                    />
-                );
-            }
-        }
-    };
 
     return (
         <>
@@ -100,7 +76,7 @@ export default function Blog({ blog, blogs }) {
                             />
                         )}
                         <div style={{ marginBottom: "0px" }}>
-                            {parse(blog.content, replaceImage)}
+                            <Html2react html={blog.content} />
                         </div>
                     </Main>
                     <Related>
@@ -110,7 +86,7 @@ export default function Blog({ blog, blogs }) {
                             style={{
                                 display: "flex",
                                 justifyContent: "center",
-                                paddingTop: "1rem"
+                                margin: "2rem 0 1rem 0"
                             }}
                         >
                             <Button text="View all" link="/blog" />
@@ -186,40 +162,13 @@ const Main = styled("div")`
     pre {
         position: relative;
         padding: 0.8rem 1rem;
-        background-color: var(--background);
-        transition: background .5s;
-        background-clip: padding-box;
-        border: solid 2px transparent;
-        border-radius: 5px;
+        transition: background 0.5s;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(8px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
         font-family: Menlo, Consolas, monaco, monospace;
-
-        &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            margin: -2px;
-            border-radius: inherit;
-            background: linear-gradient(
-                to bottom right,
-                rgb(237, 34, 36),
-                rgb(243, 91, 34),
-                rgb(249, 150, 33),
-                rgb(245, 193, 30),
-                rgb(241, 235, 27) 27%,
-                rgb(241, 235, 27),
-                rgb(241, 235, 27) 33%,
-                rgb(99, 199, 32),
-                rgb(12, 155, 73),
-                rgb(33, 135, 141),
-                rgb(57, 84, 165),
-                rgb(97, 55, 155),
-                rgb(147, 40, 142)
-            );
-        }
 
         code {
             display: inline-block;

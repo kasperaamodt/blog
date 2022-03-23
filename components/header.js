@@ -35,7 +35,7 @@ const Nav = styled("nav")`
         padding: 5px 10px;
         border-radius: 5px;
         font-weight: 600;
-        transition: .5s;
+        transition: 0.5s;
 
         &:hover {
             background-color: var(--mode);
