@@ -33,7 +33,7 @@ const Grid = styled("div")`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        transition: background .5s;
         position: relative;
         padding: 20px;
         background-color: var(--background);
