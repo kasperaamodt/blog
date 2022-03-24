@@ -1,6 +1,7 @@
+import parse, { domToReact } from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
-import parse, { domToReact } from "html-react-parser";
+import YouTube from "./youtube";
 
 export default function Html2react({ html } = html) {
     const content = {
@@ -13,6 +14,18 @@ export default function Html2react({ html } = html) {
                         </a>
                     </Link>
                 );
+            }
+
+            if (name === "figure" && /wp-block-embed-youtube/.test(attribs.class)) {
+                return <>{domToReact(children, content)}</>;
+            }
+
+            if (name === "div" && /wp-block-embed__wrapper/.test(attribs.class)) {
+                return <>{domToReact(children, content)}</>;
+            }
+
+            if (name === "iframe" && /youtube.com\/embed/.test(attribs.src)) {
+                return <YouTube src={attribs.src} />
             }
 
             if (name === "figure" && /wp-block-image/.test(attribs.class)) {
