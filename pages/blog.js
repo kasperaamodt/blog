@@ -137,8 +137,10 @@ const Years = styled("div")`
     margin: 2rem 0;
     .post-card {
         position: relative;
-        border-bottom: 1px solid;
-        padding: 24px 0;
+        padding: 12px 24px;
+        margin: 12px -24px;
+        border-radius: 10px;
+        transition: .5s ease;
 
         display: flex;
         justify-content: space-between;
@@ -162,6 +164,11 @@ const Years = styled("div")`
             height: 100%;
             width: 100%;
             text-decoration: none;
+        }
+
+        &:hover {
+            background: var(--card);
+            border-radius: 10px;
         }
     }
 `;

@@ -1,14 +1,25 @@
 import { styled } from "goober";
+import { useTheme } from "next-themes";
 import ThemeChanger from "./theme";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
+    const { resolvedTheme } = useTheme();
     return (
         <Wrapper>
-            <Nav>
-                <Link href="/">Home</Link>
-                <Link href="/blog">Blog</Link>
-            </Nav>
+            <Link href="/" passHref>
+                <Image
+                    src={
+                        resolvedTheme === "light"
+                            ? "/images/k-black.svg"
+                            : "/images/k-white.svg"
+                    }
+                    width={25}
+                    height={25}
+                />
+            </Link>
+
             <ThemeChanger />
         </Wrapper>
     );
@@ -23,6 +34,10 @@ const Wrapper = styled("div")`
     justify-content: space-between;
     padding-top: 2rem;
     padding-bottom: 4rem;
+
+    img {
+        cursor: pointer;
+    }
 `;
 
 const Nav = styled("nav")`

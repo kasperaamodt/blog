@@ -12,6 +12,7 @@
         "globby": "^13.1.1",
         "goober": "^2.1.8",
         "html-react-parser": "^1.4.8",
+        "kbar": "^0.1.0-beta.32",
         "next": "12.1.0",
         "next-themes": "^0.1.1",
         "preact": "^10.6.6",
