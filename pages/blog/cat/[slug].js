@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { styled } from "goober";
 import Header from "@components/header";
-import Footer from "@components/footer";
 import {
     getCategoryBySlug,
     getAllPostsByCategory,

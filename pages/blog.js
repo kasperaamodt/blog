@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { styled } from "goober";
 import Header from "@components/header";
-import Footer from "@components/footer";
 import { getPostByYear, getAllCategories } from "@lib/api";
 import Link from "next/link";
 import { formatDate } from "@utils/functions";

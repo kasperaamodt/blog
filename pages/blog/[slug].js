@@ -6,7 +6,6 @@ import { getAllPostSlugs, getPostAndMorePosts } from "@lib/api";
 import { styled } from "goober";
 import Html2react from "@components/html2react";
 import Header from "@components/header";
-import Footer from "@components/footer";
 import { formatDate, metaDescription, removeTags } from "@utils/functions";
 import PostGrid from "@components/post-grid";
 import Button from "@components/button";
