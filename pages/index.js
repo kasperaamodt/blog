@@ -125,8 +125,6 @@ export default function Home({ categories, posts, y2022, y2021, y1999 }) {
                     })}
                 </Years>
             </Main>
-
-            <Footer />
         </>
     );
 }

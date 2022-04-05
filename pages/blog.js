@@ -84,8 +84,6 @@ export default function Blog({ categories, y2022, y2021, y1999 }) {
                     })}
                 </Years>
             </Main>
-
-            <Footer />
         </>
     );
 }

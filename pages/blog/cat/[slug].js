@@ -56,8 +56,6 @@ export default function Blog({ posts, categories }) {
                     );
                 })}
             </Main>
-
-            <Footer />
         </>
     );
 }

@@ -92,8 +92,6 @@ export default function Blog({ blog, blogs }) {
                             <Button text="View all" link="/blog" />
                         </div>
                     </Related>
-
-                    <Footer />
                 </>
             )}
         </>
