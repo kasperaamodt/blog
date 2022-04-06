@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
     if (req.query.secret !== process.env.REVALIDATE) {
-        return res.status(401).json({ message: "Invalid token, " + process.env.REVALIDATE + " . " + req.query.secret });
+        return res.status(401).json({ message: "Invalid token" });
     }
 
     try {
@@ -13,8 +13,11 @@ export default async function handler(req, res) {
         await res.unstable_revalidate("/blog");
         if (slug) {
             await res.unstable_revalidate(`/blog/${slug}`);
+            return res.json({ revalidated: true });
+        } else {
+            return res.json({ revalidated: true, slug: false });
         }
-        return res.json({ revalidated: true });
+        
     } catch (err) {
         return res.status(500).send("Error revalidating");
     }
