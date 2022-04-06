@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             await res.unstable_revalidate(`/blog/${slugToReval}`);
             return res.json({ revalidated: true, revalidatedSlug: slugToReval });
         } else {
-            return res.json({ revalidated: true, slug: false });
+            return res.json({ revalidated: true, slug: false, reqBody: body });
         }
         
     } catch (err) {
