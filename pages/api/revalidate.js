@@ -8,14 +8,14 @@ export default async function handler(req, res) {
         if (!body) {
             res.status(400).send("Bad request, no body");
         }
-        const slug = body.slug;
+        const slugToReval = body.slug;
         await res.unstable_revalidate("/");
         await res.unstable_revalidate("/blog");
-        if (slug) {
-            await res.unstable_revalidate(`/blog/${slug}`);
+        if (slugToReval) {
+            await res.unstable_revalidate(`/blog/${slugToReval}`);
             return res.json({ revalidated: true });
         } else {
-            return res.json({ revalidated: true, slug: slug });
+            return res.json({ revalidated: true, slug: slugToReval });
         }
         
     } catch (err) {
