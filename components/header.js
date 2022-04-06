@@ -17,6 +17,7 @@ export default function Header() {
                     }
                     width={25}
                     height={25}
+                    alt="Kasper Aamodt logo"
                 />
             </Link>
 

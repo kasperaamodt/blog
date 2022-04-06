@@ -2,6 +2,7 @@ import parse, { domToReact } from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
 import YouTube from "./youtube";
+import Disclaimer from "./replacements/disclaimer";
 
 export default function Html2react({ html } = html) {
     const content = {
@@ -45,6 +46,10 @@ export default function Html2react({ html } = html) {
                         }
                     />
                 );
+            }
+
+            if (name === "div" && /disclaimer/.test(attribs.class)) {
+                return <Disclaimer>{domToReact(children, content)}</Disclaimer>
             }
         }
     };
