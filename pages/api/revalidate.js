@@ -15,6 +15,8 @@ export default async function handler(req, res) {
                 revalidated: true,
                 revalidatedSlug: slugToReval
             });
+        } else {
+            return res.status(400).send("No slug in body");
         }
     } catch (err) {
         return res.status(500).send("Error revalidating");
