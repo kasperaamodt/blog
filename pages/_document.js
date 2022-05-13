@@ -24,6 +24,12 @@ export default class MyDocument extends Document {
                         data-domain="aamodt.xyz"
                         src="https://plausible.io/js/plausible.js"
                     />
+                    <script
+                        async
+                        defer
+                        data-domain="aamodt.xyz"
+                        src="https://analytics.brainify.no/js/plausible.js"
+                    />
                 </Head>
                 <body>
                     <Main />
