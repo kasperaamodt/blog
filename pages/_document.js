@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
                         async
                         defer
                         data-domain="aamodt.xyz"
-                        src="https://analytics.brainify.no/js/plausible.js"
+                        src="https://plausible.io/js/plausible.js"
                     />
                 </Head>
                 <body>
