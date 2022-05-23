@@ -44,19 +44,11 @@ export default function Home({ categories, posts, y2022, y2021, y1999 }) {
                     <h2 style={{ marginBottom: "5px" }}>
                         Developer at{" "}
                         <a
-                            href="https://brainify.no"
+                            href="https://accelr.io"
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                         >
-                            Brainify
-                        </a>
-                        &nbsp;&{" "}
-                        <a
-                            href="https://aamodtgroup.com"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            AG
+                            Accelr
                         </a>
                     </h2>
                     <p>Blogging about stuff, mostly tech.</p>
