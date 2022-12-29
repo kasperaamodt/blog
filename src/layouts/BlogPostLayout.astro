@@ -14,6 +14,33 @@ const { frontmatter } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{frontmatter.title}</title>
+		<meta name="description" content={frontmatter.description} />
+		<meta property="og:title" content={frontmatter.title} />
+		<meta
+			property="og:image"
+			content={`https://og.accelr.io/api/og/kasperaamodt-blog/post?title=${frontmatter.title}`}
+		/>
+		<meta property="og:description" content={frontmatter.description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Kasper Aamodt's blog" />
+		<meta
+			property="og:url"
+			content={`https://aamodt.xyz${frontmatter.url}`}
+		/>
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:url"
+			content={`https://aamodt.xyz${frontmatter.url}`}
+		/>
+		<meta property="twitter:title" content={frontmatter.title} />
+		<meta
+			property="twitter:description"
+			content={frontmatter.description}
+		/>
+		<meta
+			property="twitter:image"
+			content={`https://og.accelr.io/api/og/kasperaamodt-blog/post?title=${frontmatter.title}`}
+		/>
 		<script
 			defer
 			data-domain="aamodt.xyz"
