@@ -4,15 +4,15 @@
 </div>
 
 <script>
-	if (window.localStorage.getItem('theme')) {
+	if (window.localStorage.getItem('acc-theme')) {
 		document.body.setAttribute('data-theme', 'dark');
 	}
 	const themeButton = document.getElementById('themeSwitch');
 	themeButton?.addEventListener('click', function () {
 		document.body.hasAttribute('data-theme')
 			? (document.body.removeAttribute('data-theme'),
-			  window.localStorage.removeItem('theme'))
+			  window.localStorage.removeItem('acc-theme'))
 			: (document.body.setAttribute('data-theme', 'dark'),
-			  window.localStorage.setItem('theme', 'dark'));
+			  window.localStorage.setItem('acc-theme', 'dark'));
 	});
 </script>
