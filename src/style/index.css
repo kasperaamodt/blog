@@ -118,12 +118,12 @@ html {
 	font-size: 1.25rem;
 }
 
-.content ul {
+.content .unstyled-list {
 	list-style: none;
 	padding: 0;
 }
 
-.content.post p {
+.content.post * {
 	margin: 15px 0;
 }
 
