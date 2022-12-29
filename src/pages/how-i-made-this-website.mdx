@@ -1,0 +1,37 @@
+---
+layout: '@layouts/BlogPostLayout.astro'
+title: How I made this website
+date: 01.26.2022
+---
+
+I recently rebuilt my website, ground up. I wanted to do it because the previous version was in WP, and since I built that, I have learned a lot of new stuff. Here I'm writing about the different technologies I used to make this new website.
+
+## Next JS
+
+I rebuilt the site in the first place because I recently learned about Next JS and wanted to make a website with it. My experience with it has been excellent, and making this website was a great experience. As they state on the website, Next JS is a production-ready framework, which is absolutely true. It has hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+
+## WordPress
+
+My site is a blog, and as I did not want to merge all my posts to a new platform, I kept WP as a backend. Over the years, I have grown to like WP, and the new Gutenberg editor is a great way to write blog posts. So I kept it, and I do not regret it. I like the combination of WP and Next JS because a lot of customers are used to writing and editing content in WP, which they can continue to do. At the same time, they can have a fast frontend with Next JS.
+
+## Goober
+
+For styling, I like to use css-in-js, and my go-to for a long time was Emotion. I never really chose it, it was included by default in a WP React framework called Frontity. But for this project, I decided to look around a little more. I follow one of the earlier employees of Frontity on Twitter, and it turns out that he made a lightweight css-in-js library called Goober.
+
+Goober is a less than 1KB css-in-js solution that works like styled-components or Emotion, but it is much smaller. It's easy to set up, easy to use, and supports autoprefixing, TypeScript, and more.
+
+## html-react-parser
+
+This npm package is used to replace standard images in blog posts with the image component from next. This reduces the images sizes significantly and makes the site more performant.
+
+## Preact
+
+I use Preact for the production build of the website, but not in development. The reason is to reduce the js bundle size, and since I don't use any advanced react logic, it's straightforward to switch it out.
+
+## Plausible
+
+For analytics, I have used Plausible Analytics. Plausible is a lightweight and open-source website analytics tool. It uses no cookies and fully complies with GDPR, CCPA, and PECR. It's also made and hosted in the EU. Plausible is not only privacy-friendly, but it is also 45 (!!!) times smaller than GA. As someone who spends a lot of time optimizing, that was such a great feeling to get rid of that slow loading speed while waiting for GA to load.
+
+## Vercel
+
+And finally, hosting. For hosting, I'm using Vercel, as I do with all my projects. I've never used a platform with the same developer experience when it comes to hosting. Deploying, previewing, and shipping have never been easier, and I have never looked back after choosing Vercel as my platform of choice.

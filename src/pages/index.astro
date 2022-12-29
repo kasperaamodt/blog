@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { formatDate } from '@utils/functions';
+
+const posts = await Astro.glob('./*.mdx');
+posts.sort(function (a, b) {
+	return (
+		new Date(b.frontmatter.date).getTime() -
+		new Date(a.frontmatter.date).getTime()
+	);
+});
+---
+
+<Layout title="Kasper Aamodt - Founder, developer, writer (sometimes).">
+	<div class="content home">
+		<p class="bio">
+			I'm currently a developer at my own company,
+			<a
+				href="https://accelr.io"
+				target="_blank"
+				rel="noopener noreferrer">Accelr</a
+			>. I blog about stuff, mostly tech.
+		</p>
+		<ul>
+			{
+				posts?.map((post) => (
+					<li>
+						<b>{formatDate(post.frontmatter.date)}</b>
+						<a href={post.url}>{post.frontmatter.title}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</Layout>
