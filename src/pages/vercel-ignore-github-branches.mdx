@@ -1,0 +1,68 @@
+---
+layout: '@layouts/BlogPostLayout.astro'
+title: Vercel – ignore GitHub branches
+date: 05.31.2021
+---
+
+import { Picture } from '@astrojs/image/components';
+import before from '../assets/vercel-ignore-github-branches/before.png';
+import after from '../assets/vercel-ignore-github-branches/after.png';
+import buildstep from '../assets/vercel-ignore-github-branches/build-step.png';
+
+I'm writing this blog post as a follow-up to my other post about deploying Frontity to Vercel with GitHub. After I had set up the GitHub deploy, I installed Dependabot in all my projects, so it updates packages automatically.
+
+I had actually never heard of Dependabot, as I am still quite new to GitHub. But I managed to install it quite easily, and it works like a charm. The only thing I did not like about it, is that for each Dependabot PR, a branch was made. And with Vercel, every branch gets a preview build. That becomes a lot of builds.
+
+So I wanted to see if it was a way I could stop this, and after reading on the Vercel GitHub, and documentation, I found a solution. Vercel has a field called "Ignore build step" in the git settings, which you should read more about. But what I did was make a Bash script that runs before every build is started. The script looks like this:
+
+```
+#!/bin/bash
+
+if [[ $VERCEL_GIT_COMMIT_REF =~ "dependabot" ]] ; then
+  echo ">> Skipping deploy!"
+  exit 0;
+else
+  echo ">> Proceeding with deploy."
+  exit 1; 
+fi
+```
+
+My goal was to stop preview builds from Dependabot branches, so I made a regex that checks if the variable $VERCEL_GIT_COMMIT_REF contains the word dependabot. The variable is the name of the branch, and every branch that Dependabot makes contains the word Dependabot. I wrote the script in a file called vercel.sh, which I put in the root of my project.
+
+As you can see, before I added the script, every PR triggered a preview build:
+
+<Picture src={before} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="GitHub pull request without dependabot" />
+
+But now, after the script, it looks like this:
+
+<Picture src={after} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="GitHub pull request with dependabot" />
+
+As you can see, the preview build is canceled. Here is a quick guide on how to do it:
+
+## Make a Bash file
+
+You need to create a bash file (.sh) with these commands, and place it in the project, make sure it is uploaded to the GitHub repo.
+
+```
+#!/bin/bash
+
+if [[ $VERCEL_GIT_COMMIT_REF =~ "dependabot" ]] ; then
+  echo ">> Skipping deploy!"
+  exit 0;
+else
+  echo ">> Proceeding with deploy."
+  exit 1; 
+fi
+```
+
+You don't have to use this to only stop dependabot, you can make a new regex if you want it to stop something else.
+
+# Define the script in Vercel settings
+
+In the settings of your project in Vercel, you need to run the script. You do this at the bottom of the Git tab.
+
+<Picture src={buildstep} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="Vercel project settings -> git -> ignored build step" />
+
+My script is called vercel.sh, and it is placed at the root of the project. So I just write "bash vercel.sh". If you want to, you can place the script in the folder in the project, but then you need to enter "bash relative-path/vercel.sh".
+
+So now, every time a branch is made that matches your regex, this script will stop it from making a preview build.

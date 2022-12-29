@@ -123,6 +123,24 @@ html {
 	padding: 0;
 }
 
+.content .unstyled-list li {
+	padding: 10px 0;
+}
+
+.content .unstyled-list li a,
+.content .unstyled-list li b {
+	line-height: 1;
+}
+
+.content .unstyled-list li a {
+	display: flex;
+	gap: 5px;
+}
+
+.content .unstyled-list li a {
+	text-decoration: none;
+}
+
 .content.post * {
 	margin: 15px 0;
 }
@@ -154,8 +172,12 @@ a {
 	color: var(--foreground);
 }
 
-@media (max-width: 650px) {
+@media (max-width: 568px) {
 	:root {
 		--spacing: 15px;
+	}
+
+	.content .unstyled-list li a {
+		flex-direction: column;
 	}
 }
