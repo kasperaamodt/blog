@@ -1,0 +1,35 @@
+---
+layout: '@layouts/BlogPostLayout.astro'
+title: Next JS - replace React with Preact
+date: 01.06.2022
+---
+
+I made this website with Next JS, an excellent react framework for making production-ready websites. The downside to React framework is that they can ship a lot of js to the browser, which comes at a performance cost. Luckily, you can take some steps to optimize this, and replacing React with Preact is one of them.
+
+Now I do not want to take any credit for this tip. I saw it in a video from Vercel's Director of Developer Relations, Lee Robinson. Switching it out is easy as long as you are not using any of these features. So without further ado, here is what you need to do:
+
+## Install Preact:
+
+```
+npm i preact
+```
+
+## Add this snippet to your next.config.js file:
+
+```
+module.exports = {
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      });
+    }
+
+    return config;
+  },
+};
+```
+
+And that's it. Now Preact will be used in production builds instead of React. This website now uses Preact. Before the switch, 91.8 kb of js was loaded in the browser without caching. After the switch, 55.5 kb of js was loaded when testing the same site.

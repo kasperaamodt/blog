@@ -1,0 +1,64 @@
+---
+layout: '@layouts/BlogPostLayout.astro'
+title: Next JS - optimize blog posts
+date: 01.13.2022
+---
+
+This website is built with Next JS and WordPress. I used WP for the blog part of the website, as there is no need to reinvent the wheel when it comes to a CMS. I worked with WP long before starting with Next JS, so it was a natural choice. 
+
+Many writers, including me, use images in blogs posts. So when you import that blog post into Next, most people use dangerouslySetInnerHTML to render all the HTML. 
+
+```
+<div dangerouslySetInnerHTML={{__html: post.content}} />
+```
+
+This usually works well, but it could be better. The problem here is that all of the images in the content will be in a standard <img /> tag, which is not recommended in Next JS. In Next JS, you should use the Image component from 'next/image', which optimizes images to make them smaller in size, therefore reducing the page size and ultimately the loading times.
+
+## html-react-parser
+
+So, how can you fix this? Well, as the heading suggests, html-react-parser. The parser converts an HTML string into one or more React elements. We can use this package instead of dangerouslySetInnerHTML to parse the HTML from our post and replace content when it is being parsed. Here is how you do it:
+
+## Install the parser
+
+```
+npm i html-react-parser
+```
+
+## Import and use
+
+Parsing the HTML string with the parse function, which is taking in the HTML string and options as parameters.
+
+```
+<div>
+    {parse(blog.content, replaceImage)}
+</div>
+```
+
+The options I pass to the parser, to target the img tag and replace it.
+
+```
+const replaceImage = {
+    replace: ({ name, attribs, children }) => {
+        if (name === "figure" && /wp-block-image/.test(attribs.class)) {
+            return <>{domToReact(children, replaceImage)}</>;
+        }
+        if (name === "img") {
+            return (
+                <Image
+                    src={attribs.src}
+                    width={attribs.width}
+                    height={attribs.height}
+                    alt={attribs.alt ? attribs.alt : "Blog post image"}
+                />
+            );
+        }
+    }
+};
+```
+
+Now all inserted images in the blog post use the Image component.
+[Full Gist](https://gist.github.com/kasperaamodt/055c6203d8761b4500c5fb108f0e4f03).
+
+## Performance
+
+So, why should you do this? As stated above, it will optimize all images in posts, leading to faster load times, and ultimately, better SEO. Of course, the package itself does increase the bundle size. But the slight increase that adds, compared to the savings on image sizes, is a net saving in bundle size.
