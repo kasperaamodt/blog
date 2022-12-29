@@ -14,6 +14,11 @@ const { frontmatter } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{frontmatter.title}</title>
+		<script
+			defer
+			data-domain="aamodt.xyz"
+			src="https://plausible.io/js/script.js"
+		></script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -21,7 +26,6 @@ const { frontmatter } = Astro.props;
 			<div class="content post">
 				<span>{frontmatter.date}</span>
 				<h1>{frontmatter.title}</h1>
-
 				<slot />
 			</div>
 			<Footer />
