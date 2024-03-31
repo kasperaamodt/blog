@@ -1,10 +1,10 @@
 ---
-layout: '@layouts/BlogPostLayout.astro'
+layout: '@/layouts/BlogPostLayout.astro'
 title: Plausible - privacy-first analytics
 date: 01.07.2022
 ---
 
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 import dashboard from '../assets/plausible/plausible-dashboard.jpeg';
 
 I have worked with many clients during my (still short) career. Since the GDPR rules were put into practice, many of them have reached out regarding cookie banners and tracking in general. In the start, even I was unsure, and I knew about it in advance. Even now, after seminars and courses, there are still cases where I am unsure what is allowed and what is not.
@@ -13,9 +13,14 @@ When it comes to website analytics, many use Google Analytics, and it was the go
 
 Plausible is a lightweight and open-source website analytics tool. It uses no cookies and fully complies with GDPR, CCPA, and PECR. It's also made and hosted in the EU.
 
-<Picture src={dashboard} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="Plausible Analytics dashboard" />
+<Picture
+	src={dashboard}
+	widths={[300, 400, 480, 570]}
+	sizes="(min-width: 570px) 570px, 100vw"
+	alt="Plausible Analytics dashboard"
+/>
 
-*"Web analytics went from a simple, fun, and useful practice for site owners to a data grabbing machine for surveillance capitalism. Google Analytics is frustrating to use, difficult to understand, slow to load, and privacy-invasive too."*
+_"Web analytics went from a simple, fun, and useful practice for site owners to a data grabbing machine for surveillance capitalism. Google Analytics is frustrating to use, difficult to understand, slow to load, and privacy-invasive too."_
 
 ## Performance
 
@@ -31,7 +36,7 @@ If you paid attention when you entered this website, you might have noticed that
 
 Plausible costs money, starting at $9/month and going up with more page views. GA is, of course, free, but that does not mean it doesn't cost you anything. Likewise to other products, you are the product if you are not paying for it. The data you collect on GA's platform is worth so much more for them than any monthly fee you could pay.
 
-But if you are not willing to, or not able to spend money on Plausible, there is an alternative. You can host it on your own server for free. This does, of course, require setup, but Plausible has good [documentation](https://plausible.io/docs/self-hosting) you can lean on. 
+But if you are not willing to, or not able to spend money on Plausible, there is an alternative. You can host it on your own server for free. This does, of course, require setup, but Plausible has good [documentation](https://plausible.io/docs/self-hosting) you can lean on.
 
 And one last tidbit, [5% of Plausible's gross revenue is donated to environmental causes and open source](https://plausible.io/giving-back).
 

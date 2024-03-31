@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header sans-serif">
 	<a href="/"><b>Kasper Aamodt</b></a>
 	<div class="theme" id="themeSwitch"></div>
 </div>
@@ -11,8 +11,8 @@
 	themeButton?.addEventListener('click', function () {
 		document.body.hasAttribute('data-theme')
 			? (document.body.removeAttribute('data-theme'),
-			  window.localStorage.removeItem('acc-theme'))
+				window.localStorage.removeItem('acc-theme'))
 			: (document.body.setAttribute('data-theme', 'dark'),
-			  window.localStorage.setItem('acc-theme', 'dark'));
+				window.localStorage.setItem('acc-theme', 'dark'));
 	});
 </script>

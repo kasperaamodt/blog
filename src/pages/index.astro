@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { formatDate } from '@utils/functions';
+import { formatDate } from '@/utils/functions';
 
 const posts = await Astro.glob('./*.mdx');
 posts.sort(function (a, b) {

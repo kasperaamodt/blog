@@ -1,10 +1,10 @@
 ---
-layout: '@layouts/BlogPostLayout.astro'
+layout: '@/layouts/BlogPostLayout.astro'
 title: Vercel – ignore GitHub branches
 date: 05.31.2021
 ---
 
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 import before from '../assets/vercel-ignore-github-branches/before.png';
 import after from '../assets/vercel-ignore-github-branches/after.png';
 import buildstep from '../assets/vercel-ignore-github-branches/build-step.png';
@@ -23,7 +23,7 @@ if [[ $VERCEL_GIT_COMMIT_REF =~ "dependabot" ]] ; then
   exit 0;
 else
   echo ">> Proceeding with deploy."
-  exit 1; 
+  exit 1;
 fi
 ```
 
@@ -31,11 +31,21 @@ My goal was to stop preview builds from Dependabot branches, so I made a regex t
 
 As you can see, before I added the script, every PR triggered a preview build:
 
-<Picture src={before} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="GitHub pull request without dependabot" />
+<Picture
+	src={before}
+	widths={[300, 400, 480, 570]}
+	sizes="(min-width: 570px) 570px, 100vw"
+	alt="GitHub pull request without dependabot"
+/>
 
 But now, after the script, it looks like this:
 
-<Picture src={after} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="GitHub pull request with dependabot" />
+<Picture
+	src={after}
+	widths={[300, 400, 480, 570]}
+	sizes="(min-width: 570px) 570px, 100vw"
+	alt="GitHub pull request with dependabot"
+/>
 
 As you can see, the preview build is canceled. Here is a quick guide on how to do it:
 
@@ -51,7 +61,7 @@ if [[ $VERCEL_GIT_COMMIT_REF =~ "dependabot" ]] ; then
   exit 0;
 else
   echo ">> Proceeding with deploy."
-  exit 1; 
+  exit 1;
 fi
 ```
 
@@ -61,7 +71,12 @@ You don't have to use this to only stop dependabot, you can make a new regex if 
 
 In the settings of your project in Vercel, you need to run the script. You do this at the bottom of the Git tab.
 
-<Picture src={buildstep} widths={[300, 400, 480, 570]} sizes="(min-width: 570px) 570px, 100vw" alt="Vercel project settings -> git -> ignored build step" />
+<Picture
+	src={buildstep}
+	widths={[300, 400, 480, 570]}
+	sizes="(min-width: 570px) 570px, 100vw"
+	alt="Vercel project settings -> git -> ignored build step"
+/>
 
 My script is called vercel.sh, and it is placed at the root of the project. So I just write "bash vercel.sh". If you want to, you can place the script in the folder in the project, but then you need to enter "bash relative-path/vercel.sh".
 

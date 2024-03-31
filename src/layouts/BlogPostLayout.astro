@@ -1,12 +1,12 @@
 ---
-import Footer from '@components/footer/Footer.astro';
-import Header from '@components/header/Header.astro';
-import '@style/index.css';
+import Footer from '@/components/footer/Footer.astro';
+import Header from '@/components/header/Header.astro';
+import '@/style/index.css';
 
 const { frontmatter } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -44,10 +44,9 @@ const { frontmatter } = Astro.props;
 		<script
 			defer
 			data-domain="aamodt.xyz"
-			src="https://plausible.io/js/script.js"
-		></script>
+			src="https://plausible.io/js/script.js"></script>
 	</head>
-	<body>
+	<body class="serif">
 		<div class="wrapper">
 			<Header />
 			<div class="content post">

@@ -1,7 +1,7 @@
 ---
-import Footer from '@components/footer/Footer.astro';
-import Header from '@components/header/Header.astro';
-import '@style/index.css';
+import Footer from '@/components/footer/Footer.astro';
+import Header from '@/components/header/Header.astro';
+import '@/style/index.css';
 
 export interface Props {
 	title: string;
@@ -13,7 +13,7 @@ export interface Props {
 const { title, description, image, url } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -36,10 +36,9 @@ const { title, description, image, url } = Astro.props;
 		<script
 			defer
 			data-domain="aamodt.xyz"
-			src="https://plausible.io/js/script.js"
-		></script>
+			src="https://plausible.io/js/script.js"></script>
 	</head>
-	<body>
+	<body class="sans-serif">
 		<div class="wrapper">
 			<Header />
 			<slot />
